@@ -1,0 +1,43 @@
+plugins {
+    id "java"
+    id "org.springframework.boot" version "$springVersion"
+}
+
+subprojects {
+    apply plugin: "java"
+    apply plugin: "org.springframework.boot"
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compileOnly "org.projectlombok:lombok:$lombokVersion"
+
+        annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+
+        implementation "org.springframework.boot:spring-boot-starter:$springVersion"
+        implementation "org.liquibase:liquibase-core:$liquibaseVersion"
+
+        runtimeOnly "org.postgresql:postgresql:$postgresVersion"
+
+        testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+        testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+
+        testImplementation "org.springframework.boot:spring-boot-starter-test:$springVersion"
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = false
+}
