@@ -1,0 +1,16 @@
+dependencies {
+    annotationProcessor "org.mapstruct:mapstruct-processor:$mapStructVersion"
+
+    implementation "org.codehaus.httpcache4j.uribuilder:uribuilder:$uriBuilderVersion",
+            "org.mapstruct:mapstruct:$mapStructVersion",
+            "org.jsoup:jsoup:$jsoupVersion",
+            "org.springframework.boot:spring-boot-starter-data-jpa:$springVersion"
+}
+
+bootJar {
+    enabled = true
+}
+
+jar {
+    enabled = true
+}

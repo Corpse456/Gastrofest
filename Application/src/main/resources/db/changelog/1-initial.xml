@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="add_gastrofest_table" author="neznaev">
+        <createTable tableName="gastrofest">
+            <column name="id" type="bigint(20)" autoIncrement="true">
+                <constraints primaryKeyName="gastrofest_pk"
+                             primaryKey="true"/>
+            </column>
+            <column name="title" type="varchar(100)"/>
+            <column name="image_base64" type="text"/>
+            <column name="image_link" type="varchar(255)"/>
+            <column name="locations" type="varchar(100)"/>
+            <column name="start_date" type="date"/>
+            <column name="end_date" type="date"/>
+        </createTable>
+
+        <addUniqueConstraint constraintName="unique_gastrofest"
+                             tableName="gastrofest"
+                             columnNames="start_date"/>
+    </changeSet>
+
+    <changeSet id="add_participant_table" author="neznaev">
+        <createTable tableName="participant">
+            <column name="id" type="bigint(20)" autoIncrement="true">
+                <constraints primaryKeyName="participant_pk"
+                             primaryKey="true"/>
+            </column>
+            <column name="title" type="varchar(100)"/>
+            <column name="address" type="varchar(100)"/>
+            <column name="phone" type="varchar(20)"/>
+            <column name="description" type="text"/>
+            <column name="restaurant" type="boolean"/>
+        </createTable>
+
+        <addUniqueConstraint constraintName="unique_participant"
+                             tableName="participant"
+                             columnNames="title"/>
+    </changeSet>
+
+    <changeSet id="add_gastroset_table" author="neznaev">
+        <createTable tableName="gastroset">
+            <column name="id" type="bigint(20)" autoIncrement="true">
+                <constraints primaryKeyName="gastroset_pk"
+                             primaryKey="true"/>
+            </column>
+            <column name="image_base64" type="text"/>
+            <column name="image_link" type="varchar(255)"/>
+            <column name="url" type="varchar(255)"/>
+            <column name="weight" type="int"/>
+            <column name="eat_outside" type="boolean"/>
+            <column name="booking_possibility" type="boolean"/>
+            <column name="gastrofest_id" type="bigint(20)">
+                <constraints referencedTableName="gastrofest"
+                             referencedColumnNames="id"
+                             foreignKeyName="gastroset_fk_gastrofest_id"
+                             deleteCascade="true"/>
+            </column>
+            <column name="participant_id" type="bigint(20)">
+                <constraints referencedTableName="participant"
+                             referencedColumnNames="id"
+                             foreignKeyName="gastroset_fk_participant_id"
+                             deleteCascade="true"/>
+            </column>
+        </createTable>
+
+        <addUniqueConstraint constraintName="unique_gastroset"
+                             tableName="gastroset"
+                             columnNames="url"/>
+    </changeSet>
+
+    <changeSet id="add_working_hours_table" author="neznaev">
+        <createTable tableName="working_hours">
+            <column name="id" type="bigint(20)" autoIncrement="true">
+                <constraints primaryKeyName="working_hours_pk"
+                             primaryKey="true"/>
+            </column>
+            <column name="week_days" type="varchar(100)"/>
+            <column name="open_time" type="time"/>
+            <column name="close_time" type="time"/>
+        </createTable>
+
+        <addUniqueConstraint constraintName="unique_working_hours"
+                             tableName="working_hours"
+                             columnNames="week_days, open_time, close_time"/>
+    </changeSet>
+
+    <changeSet id="create_table_gastroset_meal_image_link" author="neznaev">
+        <createTable tableName="gastroset_meal_image_link">
+            <column name="gastroset_id" type="bigint(20)">
+                <constraints referencedTableName="gastroset"
+                             referencedColumnNames="id"
+                             foreignKeyName="gastroset_meal_image_link_fk_gastroset_id"
+                             deleteCascade="true"/>
+            </column>
+            <column name="image_link" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_table_gastroset_meal_description" author="neznaev">
+        <createTable tableName="gastroset_meal_description">
+            <column name="gastroset_id" type="bigint(20)">
+                <constraints referencedTableName="gastroset"
+                             referencedColumnNames="id"
+                             foreignKeyName="gastroset_meal_description_fk_gastroset_id"
+                             deleteCascade="true"/>
+            </column>
+            <column name="description" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_participant_working_hours_table" author="neznaev">
+        <createTable tableName="participant_working_hours">
+            <column name="participant_id" type="bigint(20)">
+                <constraints
+                        nullable="false"
+                        referencedTableName="participant"
+                        referencedColumnNames="id"
+                        foreignKeyName="participant_working_hours_fk_participant_id"/>
+            </column>
+
+            <column name="working_hours_id" type="bigint(20)">
+                <constraints
+                        nullable="false"
+                        referencedTableName="working_hours"
+                        referencedColumnNames="id"
+                        foreignKeyName="participant_working_hours_fk_working_hours_id"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

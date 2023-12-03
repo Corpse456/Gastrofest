@@ -1,0 +1,15 @@
+server:
+  servlet:
+    context-path: /gastrofest/api
+spring:
+  datasource:
+    url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/gastrofest
+    password: IN_PROPERTIES
+    username: IN_PROPERTIES
+    host: localhost
+    port: 5432
+  jpa:
+    show-sql: true
+  liquibase:
+    change-log: classpath:/db/liquibase-changelog.xml
+    contexts: prod
