@@ -1,5 +1,6 @@
 package by.gastrofest.service;
 
+import by.gastrofest.dbo.one.GastroSetDbo;
 import by.gastrofest.mapper.GastroSetMapper;
 import by.gastrofest.mapper.GastrofestMapper;
 import by.gastrofest.mapper.ParticipantMapper;
@@ -15,6 +16,8 @@ import by.gastrofest.repository.two.WorkingHoursRepositoryTwo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Comparator;
 
 @Service
 @RequiredArgsConstructor
@@ -59,7 +62,10 @@ public class MigrationService {
         participantRepository.saveAll(participantOnes);
 
         final var gastroSetDbos = gastroSetRepositoryTwo.findAll();
-        final var gastroSetOnes = gastroSetDbos.stream().map(gastroSetMapper::toOne).toList();
+        final var gastroSetOnes = gastroSetDbos.stream()
+                .map(gastroSetMapper::toOne)
+                .sorted(Comparator.comparing(GastroSetDbo::getId))
+                .toList();
         gastroSetRepository.saveAll(gastroSetOnes);
     }
 }

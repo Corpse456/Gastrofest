@@ -52,6 +52,7 @@ public class JdbcConfiguration2 {
         emf.setJpaVendorAdapter(jpaVendorAdapter);
         Properties jpaProperties = new Properties();
         jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        jpaProperties.put("hibernate.show-sql", true);
         emf.setJpaProperties(jpaProperties);
         return emf;
     }
