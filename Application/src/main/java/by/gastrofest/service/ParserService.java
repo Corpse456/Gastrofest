@@ -1,6 +1,6 @@
 package by.gastrofest.service;
 
-import by.gastrofest.dbo.GastroFestDbo;
+import by.gastrofest.dbo.one.GastroFestDbo;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.nodes.Document;
@@ -42,8 +42,8 @@ public class ParserService {
         final var gastroSetDocument = getDocument(gastroSetDbo.getUrl());
         gastroSetService.updateGastroSetFromGastroSetPage(gastroSetDocument, gastroSetDbo);
 
-        final var participant = participantService.getParticipantFromGastroSetPage(gastroSetDocument);
-        participantService.save(participant);
+        var participant = participantService.getParticipantFromGastroSetPage(gastroSetDocument);
+        participant = participantService.save(participant);
 
         gastroSetDbo.setGastrofest(savedGastrofest);
         gastroSetDbo.setParticipant(participant);

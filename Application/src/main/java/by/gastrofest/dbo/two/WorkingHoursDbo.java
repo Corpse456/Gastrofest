@@ -1,5 +1,6 @@
-package by.gastrofest.dbo;
+package by.gastrofest.dbo.two;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,10 +26,13 @@ public class WorkingHoursDbo {
     @EqualsAndHashCode.Exclude
     private Long id;
 
+    @Column(name = "week_days")
     private String weekDays;
 
+    @Column(name = "open_time")
     private LocalTime openTime;
 
+    @Column(name = "close_time")
     private LocalTime closeTime;
 
     public WorkingHoursDbo(final String weekDays, final LocalTime openTime, final LocalTime closeTime) {

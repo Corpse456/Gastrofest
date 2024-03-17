@@ -1,4 +1,4 @@
-package by.gastrofest.dbo;
+package by.gastrofest.dbo.one;
 
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
@@ -28,6 +28,7 @@ public class GastroSetDbo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "image_base64")
     private String imageBase64;
 
     private String imageLink;
@@ -36,8 +37,10 @@ public class GastroSetDbo {
 
     private Integer weight;
 
+    @Column(name = "eat_outside")
     private Boolean eatOutside;
 
+    @Column(name = "booking_possibility")
     private Boolean bookingPossibility;
 
     @ElementCollection

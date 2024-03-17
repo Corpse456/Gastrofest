@@ -1,5 +1,6 @@
-package by.gastrofest.dbo;
+package by.gastrofest.dbo.two;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,14 +25,18 @@ public class GastroFestDbo {
 
     private String title;
 
+    @Column(name = "image_base64")
     private String imageBase64;
 
+    @Column(name = "image_link")
     private String imageLink;
 
     private String locations;
 
+    @Column(name = "start_date")
     private LocalDate startDate;
 
+    @Column(name = "end_date")
     private LocalDate endDate;
 
     public GastroFestDbo(final String title,

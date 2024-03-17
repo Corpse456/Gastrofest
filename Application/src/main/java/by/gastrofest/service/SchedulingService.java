@@ -13,9 +13,13 @@ public class SchedulingService {
 
     private final ParserService parserService;
 
+    private final GastrofestService gastrofestService;
+
     @EventListener(ApplicationReadyEvent.class)
     public void readInfo() {
-        parserService.parseMainPage();
+        //        parserService.parseMainPage();
+        final var gastrofestDbo2 = gastrofestService.getGastrofestDbo2();
+        System.out.println("gastrofestDbo2 = " + gastrofestDbo2);
         log.info("Update done");
     }
 

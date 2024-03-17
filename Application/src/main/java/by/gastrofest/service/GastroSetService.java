@@ -1,7 +1,7 @@
 package by.gastrofest.service;
 
-import by.gastrofest.dbo.GastroSetDbo;
-import by.gastrofest.repository.GastroSetRepository;
+import by.gastrofest.dbo.one.GastroSetDbo;
+import by.gastrofest.repository.one.GastroSetRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.nodes.Document;

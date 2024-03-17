@@ -6,10 +6,27 @@ spring:
     url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/gastrofest
     password: IN_PROPERTIES
     username: IN_PROPERTIES
+    driver-class-name: org.postgresql.Driver
     host: localhost
     port: 5432
+    jdbcUrl: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/gastrofest
+  datasource2:
+    url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/gastrofest2
+    password: ${spring.datasource.password}
+    username: ${spring.datasource.username}
+    driver-class-name: org.postgresql.Driver
+    jdbcUrl: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/gastrofest2
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
   liquibase:
     change-log: classpath:/db/liquibase-changelog.xml
     contexts: prod
+    default-schema: public
+    url: ${spring.datasource2.url}
+    user: ${spring.datasource2.username}
+    password: ${spring.datasource2.password}

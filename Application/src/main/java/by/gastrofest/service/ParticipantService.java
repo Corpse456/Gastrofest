@@ -1,8 +1,8 @@
 package by.gastrofest.service;
 
-import by.gastrofest.dbo.ParticipantDbo;
-import by.gastrofest.dbo.WorkingHoursDbo;
-import by.gastrofest.repository.ParticipantRepository;
+import by.gastrofest.dbo.one.ParticipantDbo;
+import by.gastrofest.dbo.one.WorkingHoursDbo;
+import by.gastrofest.repository.one.ParticipantRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.nodes.Document;
@@ -62,13 +62,15 @@ public class ParticipantService {
     }
 
     private static String executePhone(final Document participantInfoDocument) {
-        return "+" + participantInfoDocument.getElementsByClass(PHONE_CLASS).get(0)
-                .getElementsByClass(SET_INFO_CLASS).get(0)
-                .childNodes().get(1)
-                .attr(HREF_PROPERTY)
-                .split(": ")[1]
-                .trim()
-                .split("\\+")[1];
+        return participantInfoDocument.getElementsByClass(PHONE_CLASS).size() < 1
+                ? null
+                : "+" + participantInfoDocument.getElementsByClass(PHONE_CLASS).get(0)
+                        .getElementsByClass(SET_INFO_CLASS).get(0)
+                        .childNodes().get(1)
+                        .attr(HREF_PROPERTY)
+                        .split(": ")[1]
+                        .trim()
+                        .split("\\+")[1];
     }
 
     private static String executeDescription(final Document participantInfoDocument) {
