@@ -42,8 +42,8 @@ public class ParserService {
         final var gastroSetDocument = getDocument(gastroSetDbo.getUrl());
         gastroSetService.updateGastroSetFromGastroSetPage(gastroSetDocument, gastroSetDbo);
 
-        final var participant = participantService.getParticipantFromGastroSetPage(gastroSetDocument);
-        participantService.save(participant);
+        var participant = participantService.getParticipantFromGastroSetPage(gastroSetDocument);
+        participant = participantService.save(participant);
 
         gastroSetDbo.setGastrofest(savedGastrofest);
         gastroSetDbo.setParticipant(participant);

@@ -62,13 +62,15 @@ public class ParticipantService {
     }
 
     private static String executePhone(final Document participantInfoDocument) {
-        return "+" + participantInfoDocument.getElementsByClass(PHONE_CLASS).get(0)
-                .getElementsByClass(SET_INFO_CLASS).get(0)
-                .childNodes().get(1)
-                .attr(HREF_PROPERTY)
-                .split(": ")[1]
-                .trim()
-                .split("\\+")[1];
+        return participantInfoDocument.getElementsByClass(PHONE_CLASS).size() < 1
+                ? null
+                : "+" + participantInfoDocument.getElementsByClass(PHONE_CLASS).get(0)
+                        .getElementsByClass(SET_INFO_CLASS).get(0)
+                        .childNodes().get(1)
+                        .attr(HREF_PROPERTY)
+                        .split(": ")[1]
+                        .trim()
+                        .split("\\+")[1];
     }
 
     private static String executeDescription(final Document participantInfoDocument) {
