@@ -31,7 +31,7 @@ public class JdbcConfiguration1 {
     @Bean(name = "entityManagerFactory1")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory1(
             @Qualifier("datasource1") DataSource dataSource) {
-        return JdbcConfiguration2.getLocalContainerEntityManagerFactoryBean(dataSource);
+        return JdbcConfiguration2.getLocalContainerEntityManagerFactoryBean(dataSource, ".one");
     }
 
     @Bean(name = "transactionManager")

@@ -17,8 +17,8 @@ public class SchedulingService {
 
     @EventListener(ApplicationReadyEvent.class)
     public void readInfo() {
-        parserService.parseMainPage();
-        //        migrationService.migrateAllCodeBase();
+        //        parserService.parseMainPage();
+        migrationService.migrateAllCodeBase();
         log.info("Update done");
     }
 

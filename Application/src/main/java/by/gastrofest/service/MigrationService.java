@@ -1,5 +1,9 @@
 package by.gastrofest.service;
 
+import by.gastrofest.mapper.GastroSetMapper;
+import by.gastrofest.mapper.GastrofestMapper;
+import by.gastrofest.mapper.ParticipantMapper;
+import by.gastrofest.mapper.WorkingHoursMapper;
 import by.gastrofest.repository.one.GastroSetRepository;
 import by.gastrofest.repository.one.GastrofestRepository;
 import by.gastrofest.repository.one.ParticipantRepository;
@@ -20,27 +24,42 @@ public class MigrationService {
 
     private final GastrofestRepositoryTwo gastrofestRepositoryTwo;
 
+    private final GastrofestMapper gastrofestMapper;
+
     private final GastroSetRepository gastroSetRepository;
 
     private final GastroSetRepositoryTwo gastroSetRepositoryTwo;
+
+    private final GastroSetMapper gastroSetMapper;
 
     private final ParticipantRepository participantRepository;
 
     private final ParticipantRepositoryTwo participantRepositoryTwo;
 
+    private final ParticipantMapper participantMapper;
+
     private final WorkingHoursRepository workingHoursRepository;
 
     private final WorkingHoursRepositoryTwo workingHoursRepositoryTwo;
 
+    private final WorkingHoursMapper workingHoursMapper;
+
     @Transactional("transactionManager")
     public void migrateAllCodeBase() {
         final var gastroFestDbos = gastrofestRepositoryTwo.findAll();
-        gastrofestRepository.saveAll(gastroFestDbos);
+        final var oneGastroFests = gastroFestDbos.stream().map(gastrofestMapper::toOne).toList();
+        gastrofestRepository.saveAll(oneGastroFests);
+
         final var workingHoursDbos = workingHoursRepositoryTwo.findAll();
-        workingHoursRepository.saveAll(workingHoursDbos);
+        final var workingHoursOnes = workingHoursDbos.stream().map(workingHoursMapper::toOne).toList();
+        workingHoursRepository.saveAll(workingHoursOnes);
+
         final var participantDbos = participantRepositoryTwo.findAll();
-        participantRepository.saveAll(participantDbos);
+        final var participantOnes = participantDbos.stream().map(participantMapper::toOne).toList();
+        participantRepository.saveAll(participantOnes);
+
         final var gastroSetDbos = gastroSetRepositoryTwo.findAll();
-        gastroSetRepository.saveAll(gastroSetDbos);
+        final var gastroSetOnes = gastroSetDbos.stream().map(gastroSetMapper::toOne).toList();
+        gastroSetRepository.saveAll(gastroSetOnes);
     }
 }

@@ -1,4 +1,4 @@
-package by.gastrofest.dbo;
+package by.gastrofest.dbo.two;
 
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
@@ -44,7 +44,7 @@ public class GastroSetDbo {
     @Column(name = "booking_possibility")
     private Boolean bookingPossibility;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
             name = "gastroset_meal_image_link",
             joinColumns = @JoinColumn(name = "gastroset_id")
@@ -52,7 +52,7 @@ public class GastroSetDbo {
     @Column(name = "image_link")
     private List<String> mealsImages;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
             name = "gastroset_meal_description",
             joinColumns = @JoinColumn(name = "gastroset_id")

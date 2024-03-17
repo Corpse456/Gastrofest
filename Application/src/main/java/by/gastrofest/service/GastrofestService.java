@@ -1,6 +1,6 @@
 package by.gastrofest.service;
 
-import by.gastrofest.dbo.GastroFestDbo;
+import by.gastrofest.dbo.one.GastroFestDbo;
 import by.gastrofest.repository.one.GastrofestRepository;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.nodes.Document;

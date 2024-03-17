@@ -34,7 +34,7 @@ public class JdbcConfiguration2 {
     @Bean(name = "entityManagerFactory2")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory2(
             @Qualifier("datasource2") DataSource dataSource) {
-        return getLocalContainerEntityManagerFactoryBean(dataSource);
+        return getLocalContainerEntityManagerFactoryBean(dataSource, ".two");
     }
 
     @Bean(name = "transactionManager2")
@@ -44,10 +44,10 @@ public class JdbcConfiguration2 {
     }
 
     public static LocalContainerEntityManagerFactoryBean getLocalContainerEntityManagerFactoryBean(
-            @Qualifier("datasource2") final DataSource dataSource) {
+            @Qualifier("datasource2") final DataSource dataSource, final String dboPackage) {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource);
-        emf.setPackagesToScan("by.gastrofest.dbo");
+        emf.setPackagesToScan("by.gastrofest.dbo" + dboPackage);
         JpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         emf.setJpaVendorAdapter(jpaVendorAdapter);
         Properties jpaProperties = new Properties();

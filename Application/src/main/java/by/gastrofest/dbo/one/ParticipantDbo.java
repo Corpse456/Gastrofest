@@ -1,6 +1,7 @@
-package by.gastrofest.dbo;
+package by.gastrofest.dbo.one;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -35,7 +36,7 @@ public class ParticipantDbo {
 
     private boolean restaurant;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "participant_working_hours",
             joinColumns = { @JoinColumn(name = "participant_id") },

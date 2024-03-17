@@ -1,7 +1,7 @@
 package by.gastrofest.service;
 
-import by.gastrofest.dbo.ParticipantDbo;
-import by.gastrofest.dbo.WorkingHoursDbo;
+import by.gastrofest.dbo.one.ParticipantDbo;
+import by.gastrofest.dbo.one.WorkingHoursDbo;
 import by.gastrofest.repository.one.WorkingHoursRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
