@@ -1,11 +1,11 @@
 package by.gastrofest.service;
 
-import by.gastrofest.dbo.one.ParticipantDbo;
-import by.gastrofest.dbo.one.WorkingHoursDbo;
+import by.gastrofest.dbo.ParticipantDbo;
+import by.gastrofest.dbo.WorkingHoursDbo;
 import by.gastrofest.repository.one.WorkingHoursRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -14,7 +14,7 @@ public class WorkingHoursService {
 
     private final WorkingHoursRepository repository;
 
-    @Transactional
+    @Transactional("transactionManager")
     public WorkingHoursDbo save(final WorkingHoursDbo workingHoursDbo) {
         return repository.findSame(workingHoursDbo).orElseGet(() -> repository.save(workingHoursDbo));
     }

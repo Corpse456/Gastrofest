@@ -1,12 +1,12 @@
 package by.gastrofest.service;
 
-import by.gastrofest.dbo.one.ParticipantDbo;
-import by.gastrofest.dbo.one.WorkingHoursDbo;
+import by.gastrofest.dbo.ParticipantDbo;
+import by.gastrofest.dbo.WorkingHoursDbo;
 import by.gastrofest.repository.one.ParticipantRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalTime;
 import java.util.Arrays;
@@ -31,7 +31,7 @@ public class ParticipantService {
 
     private final ParticipantRepository repository;
 
-    @Transactional
+    @Transactional("transactionManager")
     @SuppressWarnings("UnusedReturnValue")
     public ParticipantDbo save(final ParticipantDbo participantDbo) {
         return repository.findByTitle(participantDbo.getTitle())

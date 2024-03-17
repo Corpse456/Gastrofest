@@ -1,6 +1,6 @@
 package by.gastrofest.repository.one;
 
-import by.gastrofest.dbo.one.GastroFestDbo;
+import by.gastrofest.dbo.GastroFestDbo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

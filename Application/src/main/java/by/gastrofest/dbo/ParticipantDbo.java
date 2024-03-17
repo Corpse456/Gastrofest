@@ -1,4 +1,4 @@
-package by.gastrofest.dbo.one;
+package by.gastrofest.dbo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

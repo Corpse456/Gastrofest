@@ -34,20 +34,25 @@ public class JdbcConfiguration2 {
     @Bean(name = "entityManagerFactory2")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory2(
             @Qualifier("datasource2") DataSource dataSource) {
-        LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-        emf.setDataSource(dataSource);
-        emf.setPackagesToScan("by.gastrofest.dbo.two");
-        JpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
-        emf.setJpaVendorAdapter(jpaVendorAdapter);
-        Properties jpaProperties = new Properties();
-        jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        emf.setJpaProperties(jpaProperties);
-        return emf;
+        return getLocalContainerEntityManagerFactoryBean(dataSource);
     }
 
     @Bean(name = "transactionManager2")
     public PlatformTransactionManager transactionManager2(
             @Qualifier("entityManagerFactory2") EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory);
+    }
+
+    public static LocalContainerEntityManagerFactoryBean getLocalContainerEntityManagerFactoryBean(
+            @Qualifier("datasource2") final DataSource dataSource) {
+        LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
+        emf.setDataSource(dataSource);
+        emf.setPackagesToScan("by.gastrofest.dbo");
+        JpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
+        emf.setJpaVendorAdapter(jpaVendorAdapter);
+        Properties jpaProperties = new Properties();
+        jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        emf.setJpaProperties(jpaProperties);
+        return emf;
     }
 }

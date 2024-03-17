@@ -8,14 +8,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
-import java.util.Properties;
 
 @Configuration
 @EnableJpaRepositories(
@@ -34,15 +31,7 @@ public class JdbcConfiguration1 {
     @Bean(name = "entityManagerFactory1")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory1(
             @Qualifier("datasource1") DataSource dataSource) {
-        LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-        emf.setDataSource(dataSource);
-        emf.setPackagesToScan("by.gastrofest.dbo.one");
-        JpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
-        emf.setJpaVendorAdapter(jpaVendorAdapter);
-        Properties jpaProperties = new Properties();
-        jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        emf.setJpaProperties(jpaProperties);
-        return emf;
+        return JdbcConfiguration2.getLocalContainerEntityManagerFactoryBean(dataSource);
     }
 
     @Bean(name = "transactionManager")

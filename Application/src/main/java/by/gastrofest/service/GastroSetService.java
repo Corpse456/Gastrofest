@@ -1,12 +1,12 @@
 package by.gastrofest.service;
 
-import by.gastrofest.dbo.one.GastroSetDbo;
+import by.gastrofest.dbo.GastroSetDbo;
 import by.gastrofest.repository.one.GastroSetRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
@@ -33,7 +33,7 @@ public class GastroSetService {
 
     private final GastroSetRepository repository;
 
-    @Transactional
+    @Transactional("transactionManager")
     @SuppressWarnings("UnusedReturnValue")
     public GastroSetDbo save(final GastroSetDbo gastroSetDbo) {
         return repository.findByUrl(gastroSetDbo.getUrl()).orElseGet(() -> repository.save(gastroSetDbo));

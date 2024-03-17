@@ -1,11 +1,11 @@
 package by.gastrofest.service;
 
-import by.gastrofest.dbo.one.GastroFestDbo;
-import jakarta.transaction.Transactional;
+import by.gastrofest.dbo.GastroFestDbo;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import static by.gastrofest.constant.MainConstants.MANI_PAGE_URL;
 import static by.gastrofest.constant.MainConstants.NODE_RECORD_CLASS;
@@ -21,7 +21,7 @@ public class ParserService {
 
     private final GastrofestService gastrofestService;
 
-    @Transactional
+    @Transactional("transactionManager")
     public void parseMainPage() {
         final var document = getDocument(MANI_PAGE_URL);
         final var savedGastrofest = saveGastrofestDbo(document);

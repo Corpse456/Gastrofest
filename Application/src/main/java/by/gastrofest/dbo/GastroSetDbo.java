@@ -1,4 +1,4 @@
-package by.gastrofest.dbo.one;
+package by.gastrofest.dbo;
 
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
@@ -31,6 +31,7 @@ public class GastroSetDbo {
     @Column(name = "image_base64")
     private String imageBase64;
 
+    @Column(name = "image_link")
     private String imageLink;
 
     private String url;

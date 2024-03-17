@@ -13,13 +13,12 @@ public class SchedulingService {
 
     private final ParserService parserService;
 
-    private final GastrofestService gastrofestService;
+    private final MigrationService migrationService;
 
     @EventListener(ApplicationReadyEvent.class)
     public void readInfo() {
-        //        parserService.parseMainPage();
-        final var gastrofestDbo2 = gastrofestService.getGastrofestDbo2();
-        System.out.println("gastrofestDbo2 = " + gastrofestDbo2);
+        parserService.parseMainPage();
+        //        migrationService.migrateAllCodeBase();
         log.info("Update done");
     }
 

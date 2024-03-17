@@ -1,4 +1,4 @@
-package by.gastrofest.dbo.two;
+package by.gastrofest.dbo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
