@@ -87,7 +87,7 @@ public class ParticipantService {
                                 ? new String[0]
                                 : workingHoursElement.get(0)
                                         .getElementsByClass(SET_INFO_CLASS).get(0)
-                                        .text().split(";"))
+                                        .text().split(", "))
                 .map(this::buildWorkingHours)
                 .collect(Collectors.toSet());
     }

@@ -28,6 +28,8 @@ public class ParticipantConstants {
 
     public static final String RESTAURANT_WORD = "ресторан";
 
+    public static final String WEIGHT_WORD = "Вес";
+
     public static final String[] REPLACE_WORDS = { "\"", "«", "»",
             "национальной белорусско-украинской кухни " };
 

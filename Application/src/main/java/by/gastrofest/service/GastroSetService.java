@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,7 @@ import static by.gastrofest.constant.ParticipantConstants.POSITIVE_POSSIBILITY;
 import static by.gastrofest.constant.ParticipantConstants.RESERVED_CLASS;
 import static by.gastrofest.constant.ParticipantConstants.SET_INFO_CLASS;
 import static by.gastrofest.constant.ParticipantConstants.TO_TAKE_CLASS;
+import static by.gastrofest.constant.ParticipantConstants.WEIGHT_WORD;
 import static by.gastrofest.utils.HttpUtil.getEncodedString;
 
 @Service
@@ -57,15 +59,18 @@ public class GastroSetService {
 
     }
 
-    private static int executeWeight(final Document participantInfoDocument) {
-        return Integer.parseInt(
-                participantInfoDocument.getElementsByClass(INFO_SUMMARY_CLASS).get(0)
-                        .getElementsByClass(SET_INFO_CLASS).get(0)
-                        .childNodes().get(1)
-                        .childNodes().get(0)
-                        .toString()
-                        .split(": ")[1]
-                        .split(" ")[0]);
+    private static Integer executeWeight(final Document participantInfoDocument) {
+        return participantInfoDocument.getElementsByClass(INFO_SUMMARY_CLASS).get(0)
+                .getElementsByClass(SET_INFO_CLASS).get(0)
+                .childNodes()
+                .stream().filter(node -> node.toString().contains(WEIGHT_WORD)).findAny()
+                .map(Node::childNodes)
+                .map(weight -> weight.get(0))
+                .map(Node::toString)
+                .map(string -> string.split(": ")[1])
+                .map(string -> string.split(" ")[0])
+                .map(Integer::parseInt)
+                .orElse(null);
     }
 
     private List<String> executeMealsDescriptions(final Document participantInfoDocument) {
