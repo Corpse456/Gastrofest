@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import static by.gastrofest.constant.MainConstants.DATA_THUMB_ATTR;
 import static by.gastrofest.constant.MainConstants.HREF_PROPERTY;
 import static by.gastrofest.constant.MainConstants.LIST_TAG;
-import static by.gastrofest.constant.MainConstants.MANI_PAGE_URL;
+import static by.gastrofest.constant.MainConstants.MAIN_PAGE_URL;
 import static by.gastrofest.constant.MainConstants.SRC_PROPERTY;
 import static by.gastrofest.constant.ParticipantConstants.IMAGES_CLASS;
 import static by.gastrofest.constant.ParticipantConstants.IMAGE_CLASS;
@@ -46,7 +46,7 @@ public class GastroSetService {
         final var imageElement = element.getElementsByClass(IMAGE_CLASS).get(0);
         final var imageLink = imageElement.absUrl(SRC_PROPERTY).split("\\?")[0];
         final var imageBase64 = getEncodedString(imageLink);
-        final var url = MANI_PAGE_URL + Objects.requireNonNull(imageElement.parent()).attr(HREF_PROPERTY);
+        final var url = MAIN_PAGE_URL + Objects.requireNonNull(imageElement.parent()).attr(HREF_PROPERTY);
         return new GastroSetDbo(imageBase64, imageLink, url);
     }
 
@@ -63,7 +63,7 @@ public class GastroSetService {
         return participantInfoDocument.getElementsByClass(INFO_SUMMARY_CLASS).get(0)
                 .getElementsByClass(SET_INFO_CLASS).get(0)
                 .childNodes()
-                .stream().filter(node -> node.toString().contains(WEIGHT_WORD)).findAny()
+                .stream().filter(node -> node.toString().toLowerCase().contains(WEIGHT_WORD)).findAny()
                 .map(Node::childNodes)
                 .map(weight -> weight.get(0))
                 .map(Node::toString)

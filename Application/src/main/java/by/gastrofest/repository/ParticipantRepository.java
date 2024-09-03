@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface ParticipantRepository extends JpaRepository<ParticipantDbo, Long> {
 
-    Optional<ParticipantDbo> findByTitle(String title);
+    Optional<ParticipantDbo> findByTitleIgnoreCase(String title);
 }

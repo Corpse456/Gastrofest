@@ -2,7 +2,7 @@ package by.gastrofest.constant;
 
 public class MainConstants {
 
-    public static final String MANI_PAGE_URL = "https://gastrofest.by";
+    public static final String MAIN_PAGE_URL = "https://gastrofest.by";
 
     public static final String NODE_RECORD_CLASS = "testsss";
 

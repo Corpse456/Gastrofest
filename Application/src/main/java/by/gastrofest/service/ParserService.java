@@ -7,7 +7,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.springframework.stereotype.Service;
 
-import static by.gastrofest.constant.MainConstants.MANI_PAGE_URL;
+import static by.gastrofest.constant.MainConstants.MAIN_PAGE_URL;
 import static by.gastrofest.constant.MainConstants.NODE_RECORD_CLASS;
 import static by.gastrofest.utils.HttpUtil.getDocument;
 
@@ -23,7 +23,7 @@ public class ParserService {
 
     @Transactional
     public void parseMainPage() {
-        final var document = getDocument(MANI_PAGE_URL);
+        final var document = getDocument(MAIN_PAGE_URL);
         final var savedGastrofest = saveGastrofestDbo(document);
 
         final var participantsNodes = document.getElementsByClass(NODE_RECORD_CLASS);

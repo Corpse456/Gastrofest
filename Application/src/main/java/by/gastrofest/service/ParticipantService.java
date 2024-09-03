@@ -6,10 +6,13 @@ import by.gastrofest.repository.ParticipantRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -27,6 +30,10 @@ import static by.gastrofest.constant.ParticipantConstants.WORKING_HOURS_CLASS;
 @RequiredArgsConstructor
 public class ParticipantService {
 
+    public static final String NOT_WORKING_DAY = "выходной";
+
+    public static final String DAY_TIME_DELIMETR = ": ";
+
     private final WorkingHoursService workingHoursService;
 
     private final ParticipantRepository repository;
@@ -34,7 +41,7 @@ public class ParticipantService {
     @Transactional
     @SuppressWarnings("UnusedReturnValue")
     public ParticipantDbo save(final ParticipantDbo participantDbo) {
-        return repository.findByTitle(participantDbo.getTitle())
+        return repository.findByTitleIgnoreCase(participantDbo.getTitle())
                 .map(participant -> {
                     if (!workingHoursService.sameWorkingHours(participantDbo, participant)) {
                         participant.setWorkingHours(participantDbo.getWorkingHours());
@@ -62,7 +69,7 @@ public class ParticipantService {
     }
 
     private static String executePhone(final Document participantInfoDocument) {
-        return participantInfoDocument.getElementsByClass(PHONE_CLASS).size() < 1
+        return participantInfoDocument.getElementsByClass(PHONE_CLASS).isEmpty()
                 ? null
                 : "+" + participantInfoDocument.getElementsByClass(PHONE_CLASS).get(0)
                         .getElementsByClass(SET_INFO_CLASS).get(0)
@@ -82,18 +89,47 @@ public class ParticipantService {
 
     private Set<WorkingHoursDbo> executeWorkingHours(final Document participantInfoDocument) {
         final var workingHoursElement = participantInfoDocument.getElementsByClass(WORKING_HOURS_CLASS);
-        return Arrays.stream(
-                        workingHoursElement.isEmpty()
-                                ? new String[0]
-                                : workingHoursElement.get(0)
-                                        .getElementsByClass(SET_INFO_CLASS).get(0)
-                                        .text().split(", "))
-                .map(this::buildWorkingHours)
-                .collect(Collectors.toSet());
+        final List<String> workingHoursList = getWorkingHoursList(workingHoursElement);
+        final Set<WorkingHoursDbo> workingHoursDboList = new LinkedHashSet<>();
+
+        for (int i = 0; i < workingHoursList.size(); i++) {
+            String workingHoursString = workingHoursList.get(i);
+            if (!workingHoursString.contains(DAY_TIME_DELIMETR)) {
+                workingHoursString = getWorkingHoursString(workingHoursList, i);
+                if (workingHoursString != null) {
+                    workingHoursList.set(i, workingHoursString);
+                }
+            }
+            workingHoursDboList.add(buildWorkingHours(workingHoursString));
+        }
+        return workingHoursDboList;
+    }
+
+    private static String getWorkingHoursString(final List<String> workingHoursList, int i) {
+        final String currentString = workingHoursList.get(i);
+        if (!currentString.matches(".*\\d.*")) {
+            while (i < workingHoursList.size()) {
+                if (workingHoursList.get(++i).matches(".*\\d.*")) {
+                    return currentString + DAY_TIME_DELIMETR + workingHoursList.get(i).split(DAY_TIME_DELIMETR)[1];
+                }
+            }
+            return null;
+        }
+        return workingHoursList.get(i - 1).split(DAY_TIME_DELIMETR)[0] + DAY_TIME_DELIMETR + currentString;
+    }
+
+    private static List<String> getWorkingHoursList(final Elements workingHoursElement) {
+        return Arrays.stream(workingHoursElement.isEmpty()
+                        ? new String[0]
+                        : workingHoursElement.get(0)
+                                .getElementsByClass(SET_INFO_CLASS).get(0)
+                                .text().split(", "))
+                .filter(workingHoursString -> !workingHoursString.contains(NOT_WORKING_DAY))
+                .collect(Collectors.toList());
     }
 
     private WorkingHoursDbo buildWorkingHours(final String workingHoursString) {
-        final var split = workingHoursString.split(": ");
+        final var split = workingHoursString.split(DAY_TIME_DELIMETR);
         final var weekDays = split[0].trim();
         final var times = split[1].split(" - ");
         final var startTime = parseTime(times, 0);

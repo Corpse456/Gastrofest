@@ -1,8 +1,8 @@
 version: "3.8"
 services:
     postgres:
-        image: postgres:latest
-        container_name: postgresql_latest
+        image: postgres:16.4
+        container_name: postgresql_gastrofest
         ports:
             - '5432:5432'
         environment:
