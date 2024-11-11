@@ -42,6 +42,7 @@ public class ParticipantService {
     @SuppressWarnings("UnusedReturnValue")
     public ParticipantDbo save(final ParticipantDbo participantDbo) {
         return repository.findByTitleIgnoreCase(participantDbo.getTitle())
+                .or(() -> repository.findByAddressIgnoreCaseAndPhone(participantDbo.getAddress(), participantDbo.getPhone()))
                 .map(participant -> {
                     if (!workingHoursService.sameWorkingHours(participantDbo, participant)) {
                         participant.setWorkingHours(participantDbo.getWorkingHours());

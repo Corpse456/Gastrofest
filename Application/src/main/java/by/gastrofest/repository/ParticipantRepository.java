@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface ParticipantRepository extends JpaRepository<ParticipantDbo, Long> {
 
     Optional<ParticipantDbo> findByTitleIgnoreCase(String title);
+
+    Optional<ParticipantDbo> findByAddressIgnoreCaseAndPhone(String address, String phone);
 }
