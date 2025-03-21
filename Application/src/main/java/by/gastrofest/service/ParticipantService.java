@@ -10,11 +10,12 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static by.gastrofest.constant.MainConstants.HREF_PROPERTY;
 import static by.gastrofest.constant.ParticipantConstants.DESCRIPTION_CLASS;
@@ -42,7 +43,8 @@ public class ParticipantService {
     @SuppressWarnings("UnusedReturnValue")
     public ParticipantDbo save(final ParticipantDbo participantDbo) {
         return repository.findByTitleIgnoreCase(participantDbo.getTitle())
-                .or(() -> repository.findByAddressIgnoreCaseAndPhone(participantDbo.getAddress(), participantDbo.getPhone()))
+                .or(() -> repository.findByAddressIgnoreCaseAndPhone(participantDbo.getAddress(),
+                        participantDbo.getPhone()))
                 .map(participant -> {
                     if (!workingHoursService.sameWorkingHours(participantDbo, participant)) {
                         participant.setWorkingHours(participantDbo.getWorkingHours());
@@ -120,13 +122,35 @@ public class ParticipantService {
     }
 
     private static List<String> getWorkingHoursList(final Elements workingHoursElement) {
-        return Arrays.stream(workingHoursElement.isEmpty()
-                        ? new String[0]
-                        : workingHoursElement.get(0)
-                                .getElementsByClass(SET_INFO_CLASS).get(0)
-                                .text().split(", "))
-                .filter(workingHoursString -> !workingHoursString.contains(NOT_WORKING_DAY))
-                .collect(Collectors.toList());
+        if (workingHoursElement.isEmpty()) {
+            return List.of();
+        }
+
+        String rawText = workingHoursElement.get(0)
+                .getElementsByClass(SET_INFO_CLASS).get(0)
+                .text();
+
+        return getWorkingHoursListWithMatcher(rawText);
+    }
+
+    private static List<String> getWorkingHoursListWithMatcher(final String rawText) {
+        Pattern pattern = Pattern.compile("([а-яА-ЯёЁ\\- ]+): ([\\d: -]+(?:, [\\d: -]+)*)");
+        Matcher matcher = pattern.matcher(rawText);
+
+        List<String> result = new ArrayList<>();
+        while (matcher.find()) {
+            String days = matcher.group(1).trim();
+            String times = matcher.group(2).trim();
+            if (times.contains(",")) {
+                final var time = times.split(", ");
+                for (final String s : time) {
+                    result.add(days + ": " + s);
+                }
+            } else {
+                result.add(days + ": " + times);
+            }
+        }
+        return result;
     }
 
     private WorkingHoursDbo buildWorkingHours(final String workingHoursString) {
