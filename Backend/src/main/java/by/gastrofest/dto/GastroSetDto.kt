@@ -6,7 +6,7 @@ data class GastroSetDto(
     val weight: Int,
     val eatOutside: Boolean,
     val bookingPossibility: Boolean,
-    val gastrofest: String,
+    val gastrofest: GastrofestDto,
     val participant: String,
     val isRestaurant: Boolean,
 )
