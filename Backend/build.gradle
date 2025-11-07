@@ -1,10 +1,15 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+}
 dependencies {
     annotationProcessor "org.mapstruct:mapstruct-processor:$mapStructVersion"
 
-    implementation "org.codehaus.httpcache4j.uribuilder:uribuilder:$uriBuilderVersion",
-            "org.mapstruct:mapstruct:$mapStructVersion",
-            "org.jsoup:jsoup:$jsoupVersion",
-            "org.springframework.boot:spring-boot-starter-data-jpa:$springVersion"
+    implementation "org.codehaus.httpcache4j.uribuilder:uribuilder:$uriBuilderVersion"
+    implementation "org.mapstruct:mapstruct:$mapStructVersion"
+    implementation "org.jsoup:jsoup:$jsoupVersion"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:$springVersion"
+    implementation "org.springframework.boot:spring-boot-starter-web:$springVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 bootJar {
@@ -13,4 +18,10 @@ bootJar {
 
 jar {
     enabled = true
+}
+repositories {
+    mavenCentral()
+}
+kotlin {
+    jvmToolchain(17)
 }

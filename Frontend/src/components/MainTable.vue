@@ -5,25 +5,45 @@ import 'vue-good-table-next/dist/vue-good-table-next.css'
 
 const columns = [
   {label: 'Фото', field: 'img', sortable: false},
-  {label: 'Имя', field: 'name', sortable: true},
-  {label: 'Возраст', field: 'age', sortable: true},
+  {label: 'Вес', field: 'weight', sortable: true},
+  {label: 'На вынос', field: 'takeaway', sortable: false},
+  {label: 'Бронь', field: 'booking', sortable: false},
+  {label: 'Гастрофест', field: 'festival', sortable: true},
+  {label: 'Заведение', field: 'place', sortable: true},
+  {label: 'Ресторан', field: 'restaurant', sortable: true},
 ]
 
 const rows = ref([])
 
-onMounted(async () => {
-  // временные данные, можно заменить fetch'ом
+onMounted(() => {
   rows.value = [
-    {img: 'https://placekitten.com/60/60', name: 'Алиса', age: 23},
-    {img: 'https://placekitten.com/61/61', name: 'Боб', age: 31},
-    {img: 'https://placekitten.com/62/62', name: 'Чарли', age: 27},
+    {
+      img: 'https://gastrofest.by/sites/default/files/0015_51.jpg',
+      weight: '250 г',
+      takeaway: 'Да',
+      booking: 'Нет',
+      festival: 'Burger Fest',
+      place: 'Бар «12»',
+      restaurant: 'Meat House',
+      url: 'https://gastrofest.by/node/14936',
+    },
+    {
+      img: 'https://gastrofest.by/sites/default/files/0001_123.jpg',
+      weight: '300 г',
+      takeaway: 'Нет',
+      booking: 'Да',
+      festival: 'Pizza Fest',
+      place: 'Pizzeria Uno',
+      restaurant: 'Cucina Italiana',
+      url: 'https://gastrofest.by/node/14938',
+    },
   ]
 })
 </script>
 
 <template>
-  <div class="max-w-4xl mx-auto bg-white shadow rounded-2xl p-6">
-    <h1 class="text-2xl font-bold mb-4 text-center">Пользователи</h1>
+  <div class="max-w-6xl mx-auto bg-white shadow rounded-2xl p-6">
+    <h1 class="text-2xl font-bold mb-4 text-center">Блюда</h1>
 
     <VueGoodTable
         :columns="columns"
@@ -31,13 +51,19 @@ onMounted(async () => {
         style-class="vgt-table striped bordered"
     >
       <template #table-row="props">
+        <!-- 👇 если колонка "Фото", делаем кликабельную ссылку -->
         <span v-if="props.column.field === 'img'">
-          <img
-              :src="props.row.img"
-              width="50"
-              height="50"
-              class="rounded-xl shadow-sm"
-          />
+          <a
+              :href="props.row.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Открыть страницу"
+          >
+            <img
+                :src="props.row.img"
+                class="thumb"
+            />
+          </a>
         </span>
         <span v-else>
           {{ props.formattedRow[props.column.field] }}
@@ -48,8 +74,15 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.vgt-table {
-  border-radius: 12px;
-  overflow: hidden;
+.thumb {
+  width: 300px;
+  border-radius: 8px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.thumb:hover {
+  transform: scale(1.05);
 }
 </style>
