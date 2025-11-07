@@ -35,7 +35,7 @@ const columns = ref([
   booleanColumn('На вынос', 'eatOutside'),
   booleanColumn('Бронь', 'bookingPossibility'),
   {label: 'Гастрофест', field: 'gastrofest', sortable: true}, // пока без фильтра
-  {label: 'Заведение', field: 'participant', sortable: true},
+  {label: 'Заведение', field: 'participant', sortable: true, tdClass: 'participant-cell'},
   booleanColumn('Ресторан', 'restaurant'),
 ])
 
@@ -115,6 +115,10 @@ onMounted(async () => {
 :deep(.vgt-table td) {
   text-align: center;
   vertical-align: middle;
+}
+
+:deep(.vgt-table td.participant-cell) {
+  white-space: pre-line; /* ✅ сохраняет \n как переносы */
 }
 .thumb {
   width: 300px;
