@@ -1,2 +1,2 @@
 rootProject.name = 'Gastrofest'
-include 'Application'
+include 'Backend'
