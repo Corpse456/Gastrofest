@@ -84,10 +84,14 @@ public class ParticipantService {
     }
 
     private static String executeDescription(final Document participantInfoDocument) {
-        return participantInfoDocument.getElementsByClass(DESCRIPTION_CLASS).get(0)
-                .getElementsByClass(SET_INFO_CLASS).get(0)
-                .childNodes().get(0)
-                .toString();
+        if (participantInfoDocument.hasClass(DESCRIPTION_CLASS)) {
+            return participantInfoDocument.getElementsByClass(DESCRIPTION_CLASS).get(0)
+                    .getElementsByClass(SET_INFO_CLASS).get(0)
+                    .childNodes().get(0)
+                    .toString();
+        } else {
+            return null;
+        }
     }
 
     private Set<WorkingHoursDbo> executeWorkingHours(final Document participantInfoDocument) {
