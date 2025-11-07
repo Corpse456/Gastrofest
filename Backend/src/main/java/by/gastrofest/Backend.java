@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GastrofestApplication {
+public class Backend {
 
     public static void main(String[] args) {
-        SpringApplication.run(GastrofestApplication.class, args);
+        SpringApplication.run(Backend.class, args);
     }
 
 }

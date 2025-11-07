@@ -8,5 +8,5 @@ data class GastroSetDto(
     val bookingPossibility: Boolean,
     val gastrofest: String,
     val participant: String,
-    val isRestaurant: Boolean,
+    val restaurant: Boolean,
 )

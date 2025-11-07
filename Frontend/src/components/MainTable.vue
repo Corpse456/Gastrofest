@@ -3,25 +3,62 @@ import {onMounted, ref} from 'vue'
 import {VueGoodTable} from 'vue-good-table-next'
 import 'vue-good-table-next/dist/vue-good-table-next.css'
 
-const columns = [
+const rows = ref([])
+const API_URL = '/api/gastroset';
+
+function boolFilterOptions() {
+  return {
+    placeholder: "Все",
+    enabled: true,
+    filterDropdownItems: ['Да', 'Нет'],
+    filterFn: (rowValue, filterText) => {
+      if (!filterText) return true
+      return (filterText === 'Да' && rowValue === true) ||
+          (filterText === 'Нет' && rowValue === false)
+    }
+  };
+}
+
+function booleanColumn(label, field) {
+  return {
+    label,
+    field,
+    sortable: false,
+    tdClass: 'bool-cell',
+    filterOptions: boolFilterOptions()
+  };
+}
+
+const columns = ref([
   {label: 'Фото', field: 'imageLink', sortable: false},
   {label: 'Вес', field: 'weight', sortable: true, type: 'number'},
-  {label: 'На вынос', field: 'eatOutside', sortable: false},
-  {label: 'Бронь', field: 'bookingPossibility', sortable: false},
-  {label: 'Гастрофест', field: 'gastrofest', sortable: true},
+  booleanColumn('На вынос', 'eatOutside'),
+  booleanColumn('Бронь', 'bookingPossibility'),
+  {label: 'Гастрофест', field: 'gastrofest', sortable: true}, // пока без фильтра
   {label: 'Заведение', field: 'participant', sortable: true},
-  {label: 'Ресторан', field: 'restaurant', sortable: false},
-]
-
-const rows = ref([])
-
-const API_URL = '/api/gastroset';
+  booleanColumn('Ресторан', 'restaurant'),
+])
 
 onMounted(async () => {
   try {
     const response = await fetch(API_URL)
     if (!response.ok) throw new Error('Ошибка загрузки данных')
     rows.value = await response.json()
+
+    // После загрузки — добавляем фильтр
+    const uniqueFests = [...new Set(rows.value.map(r => r.gastrofest))].filter(Boolean)
+    const lastFest = uniqueFests.at(-1)
+    const festColumn = columns.value.find(c => c.field === 'gastrofest')
+    festColumn.filterOptions = {
+      enabled: true,
+      placeholder: 'Все',
+      filterDropdownItems: uniqueFests,
+      filterFn: (rowValue, filterText) => {
+        if (!filterText) return true
+        return rowValue === filterText
+      },
+      filterValue: lastFest
+    }
   } catch (err) {
     console.error('Ошибка при получении данных:', err)
   }
