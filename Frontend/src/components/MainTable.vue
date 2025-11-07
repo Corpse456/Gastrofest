@@ -4,46 +4,33 @@ import {VueGoodTable} from 'vue-good-table-next'
 import 'vue-good-table-next/dist/vue-good-table-next.css'
 
 const columns = [
-  {label: 'Фото', field: 'img', sortable: false},
-  {label: 'Вес', field: 'weight', sortable: true},
-  {label: 'На вынос', field: 'takeaway', sortable: false},
-  {label: 'Бронь', field: 'booking', sortable: false},
-  {label: 'Гастрофест', field: 'festival', sortable: true},
-  {label: 'Заведение', field: 'place', sortable: true},
-  {label: 'Ресторан', field: 'restaurant', sortable: true},
+  {label: 'Фото', field: 'imageLink', sortable: false},
+  {label: 'Вес', field: 'weight', sortable: true, type: 'number'},
+  {label: 'На вынос', field: 'eatOutside', sortable: false},
+  {label: 'Бронь', field: 'bookingPossibility', sortable: false},
+  {label: 'Гастрофест', field: 'gastrofest', sortable: true},
+  {label: 'Заведение', field: 'participant', sortable: true},
+  {label: 'Ресторан', field: 'restaurant', sortable: false},
 ]
 
 const rows = ref([])
 
-onMounted(() => {
-  rows.value = [
-    {
-      img: 'https://gastrofest.by/sites/default/files/0015_51.jpg',
-      weight: '250 г',
-      takeaway: 'Да',
-      booking: 'Нет',
-      festival: 'Burger Fest',
-      place: 'Бар «12»',
-      restaurant: 'Meat House',
-      url: 'https://gastrofest.by/node/14936',
-    },
-    {
-      img: 'https://gastrofest.by/sites/default/files/0001_123.jpg',
-      weight: '300 г',
-      takeaway: 'Нет',
-      booking: 'Да',
-      festival: 'Pizza Fest',
-      place: 'Pizzeria Uno',
-      restaurant: 'Cucina Italiana',
-      url: 'https://gastrofest.by/node/14938',
-    },
-  ]
+const API_URL = '/api/gastroset';
+
+onMounted(async () => {
+  try {
+    const response = await fetch(API_URL)
+    if (!response.ok) throw new Error('Ошибка загрузки данных')
+    rows.value = await response.json()
+  } catch (err) {
+    console.error('Ошибка при получении данных:', err)
+  }
 })
 </script>
 
 <template>
   <div class="max-w-6xl mx-auto bg-white shadow rounded-2xl p-6">
-    <h1 class="text-2xl font-bold mb-4 text-center">Блюда</h1>
+    <h1 class="text-2xl font-bold mb-4 text-center">Меню</h1>
 
     <VueGoodTable
         :columns="columns"
@@ -51,20 +38,33 @@ onMounted(() => {
         style-class="vgt-table striped bordered"
     >
       <template #table-row="props">
-        <!-- 👇 если колонка "Фото", делаем кликабельную ссылку -->
-        <span v-if="props.column.field === 'img'">
+        <!-- 🖼 Фото -->
+        <span v-if="props.column.field === 'imageLink'">
           <a
               :href="props.row.url"
               target="_blank"
               rel="noopener noreferrer"
               title="Открыть страницу"
           >
-            <img
-                :src="props.row.img"
-                class="thumb"
-            />
+            <img :src="props.row.imageLink" class="thumb"/>
           </a>
         </span>
+
+        <!-- ✅❌ Булевые поля -->
+        <span v-else-if="['eatOutside', 'bookingPossibility', 'restaurant'].includes(props.column.field)">
+          <span
+              v-if="props.row[props.column.field]"
+              class="text-green-600 text-lg"
+              title="Да"
+          >✅</span>
+          <span
+              v-else
+              class="text-red-500 text-lg"
+              title="Нет"
+          >❌</span>
+        </span>
+
+        <!-- 📄 Остальные поля -->
         <span v-else>
           {{ props.formattedRow[props.column.field] }}
         </span>
@@ -74,6 +74,11 @@ onMounted(() => {
 </template>
 
 <style scoped>
+:deep(.vgt-table th),
+:deep(.vgt-table td) {
+  text-align: center;
+  vertical-align: middle;
+}
 .thumb {
   width: 300px;
   border-radius: 8px;
@@ -81,7 +86,6 @@ onMounted(() => {
   cursor: pointer;
   transition: transform 0.15s ease;
 }
-
 .thumb:hover {
   transform: scale(1.05);
 }
