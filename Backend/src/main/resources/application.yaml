@@ -1,6 +1,7 @@
 server:
   servlet:
     context-path: /gastrofest/api
+  port: 8090
 spring:
   datasource:
     url: jdbc:postgresql://${spring.datasource.host}:${spring.datasource.port}/gastrofest

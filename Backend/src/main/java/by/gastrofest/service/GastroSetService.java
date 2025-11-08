@@ -1,6 +1,8 @@
 package by.gastrofest.service;
 
 import by.gastrofest.dbo.GastroSetDbo;
+import by.gastrofest.dto.GastroSetDto;
+import by.gastrofest.mapper.GastroSetMapper;
 import by.gastrofest.repository.GastroSetRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -30,10 +32,21 @@ import static by.gastrofest.utils.HttpUtil.getEncodedString;
 
 @Service
 @RequiredArgsConstructor
-
 public class GastroSetService {
 
     private final GastroSetRepository repository;
+
+    private final GastroSetMapper mapper;
+
+    public List<GastroSetDto> findAll() {
+        final List<GastroSetDbo> all = repository.findAll();
+        return mapper.toGastroSetDto(all);
+    }
+
+    public GastroSetDto getById(final Long id) {
+        final GastroSetDbo gastroSetDbo = repository.findById(id).orElseThrow();
+        return mapper.toGastroSetDto(gastroSetDbo);
+    }
 
     @Transactional
     @SuppressWarnings("UnusedReturnValue")
@@ -42,7 +55,6 @@ public class GastroSetService {
     }
 
     public GastroSetDbo extractGastroSetInfoFromMainPage(final Element element) {
-
         final var imageElement = element.getElementsByClass(IMAGE_CLASS).get(0);
         final var imageLink = imageElement.absUrl(SRC_PROPERTY).split("\\?")[0];
         final var imageBase64 = getEncodedString(imageLink);

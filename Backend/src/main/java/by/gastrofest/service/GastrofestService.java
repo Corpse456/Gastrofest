@@ -23,6 +23,10 @@ public class GastrofestService {
 
     private final GastrofestRepository repository;
 
+    public boolean exists(final GastroFestDbo gastrofestDbo) {
+        return repository.findByStartDate(gastrofestDbo.getStartDate()).isPresent();
+    }
+
     @Transactional
     public GastroFestDbo save(final GastroFestDbo gastrofestDbo) {
         return repository.findByStartDate(gastrofestDbo.getStartDate())
