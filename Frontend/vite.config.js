@@ -11,6 +11,7 @@ export default defineConfig({
         },
     },
     server: {
+        host: true,
         proxy: {
             '/api/gastroset': {
                 target: 'http://localhost:8090/gastrofest',
