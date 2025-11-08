@@ -6,33 +6,21 @@ const route = useRoute()
 const router = useRouter()
 const gastroSet = ref(null)
 
-console.log('✅ MealPage mounted — route.params:', route.params)
-console.log('✅ MealPage mounted — history.state:', history.state)
-
-if (history.state?.gastroSet) {
-  gastroSet.value = history.state.gastroSet
-  console.log('✅ Используем gastroSet из history.state')
-} else {
-  const cached = sessionStorage.getItem('lastGastroSet')
-  if (cached) {
-    gastroSet.value = JSON.parse(cached)
-    console.log('✅ Используем gastroSet из sessionStorage')
-  }
+const cached = sessionStorage.getItem('lastGastroSet')
+if (cached) {
+  gastroSet.value = JSON.parse(cached)
 }
 
 onMounted(async () => {
   if (!gastroSet.value) {
-    console.warn('⚠️ gastroSet не найден — идём в бэк...')
     const id = route.params.id
     try {
       const response = await fetch(`/api/gastroset/${id}`)
       gastroSet.value = await response.json()
-      console.log('✅ Ответ от бэка:', gastroSet.value)
     } catch (e) {
       console.error('❌ Ошибка при загрузке из бэка:', e)
     }
   } else {
-    // кешируем для возврата назад
     sessionStorage.setItem('lastGastroSet', JSON.stringify(gastroSet.value))
   }
 })
@@ -44,53 +32,70 @@ function goBack() {
 </script>
 
 <template>
-  <div
-      v-if="gastroSet"
-      class="min-h-screen flex flex-col items-center justify-start text-center px-6 py-10 space-y-8"
-  >
-    <!-- 🔹 Кнопка Назад -->
-    <div class="w-full flex justify-start mb-6 max-w-5xl">
-      <button
-          @click="goBack"
-          class="px-4 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition"
-      >
-        ⬅ Назад
-      </button>
-    </div>
-
-    <!-- 🔹 Название участника -->
-    <h1 class="text-3xl font-bold mb-6">{{ gastroSet.participant }}</h1>
-
-    <!-- 🔹 Описания блюд -->
-    <div
-        v-if="gastroSet.mealsDescriptions?.length"
-        class="max-w-3xl text-left space-y-4 mb-10"
+  <div class="w-full max-w-5xl px-4 mb-6 flex justify-start">
+    <button
+        @click="goBack"
+        class="px-5 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition"
     >
-      <div
-          v-for="(desc, i) in gastroSet.mealsDescriptions"
-          :key="'desc-' + i"
-          class="bg-gray-50 rounded-2xl p-4 shadow-sm"
-      >
-        <p class="text-gray-800 text-base leading-relaxed">{{ desc }}</p>
+      ⬅ Назад
+    </button>
+  </div>
+  <div role="page-container">
+    <div v-if="gastroSet" class="min-h-screen flex flex-col items-center justify-start py-8 bg-gray-50">
+      <!-- Основной контент -->
+      <div class="max-w-3xl w-full mx-auto text-center flex flex-col items-center space-y-8 px-4">
+        <!-- Заголовок -->
+        <h1 class="text-3xl font-bold mb-4">{{ gastroSet.participant }}</h1>
+
+        <!-- Описания блюд -->
+        <div
+            v-if="gastroSet.mealsDescriptions?.length"
+            class="flex flex-col items-center space-y-4 w-full max-w-2xl"
+        >
+          <p
+              v-for="(desc, i) in gastroSet.mealsDescriptions"
+              :key="'desc-' + i"
+              class="text-gray-700 text-lg text-center leading-relaxed"
+          >
+            {{ desc }}
+          </p>
+        </div>
+
+        <!-- Изображения -->
+        <div
+            v-if="gastroSet.mealsImages?.length"
+            class="flex flex-wrap justify-center gap-6 mt-4"
+        >
+          <img
+              v-for="(img, i) in gastroSet.mealsImages"
+              :key="'img-' + i"
+              :src="img"
+              class="rounded-2xl shadow-md object-cover max-w-xs w-full"
+              alt="meal"
+          />
+        </div>
       </div>
     </div>
 
-    <!-- 🔹 Картинки блюд -->
-    <div
-        v-if="gastroSet.mealsImages?.length"
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center items-start max-w-5xl w-full"
-    >
-      <img
-          v-for="(img, i) in gastroSet.mealsImages"
-          :key="i"
-          :src="img"
-          class="rounded-2xl w-full object-cover shadow-lg"
-          alt=""
-      />
+    <div v-else class="text-center py-12 text-gray-500">
+      Загрузка данных...
     </div>
   </div>
-
-  <div v-else class="text-center py-12 text-gray-500">
-    Загрузка данных...
-  </div>
 </template>
+
+<style scoped>
+div[role="page-container"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+div[role="page-container"] * {
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>

@@ -47,7 +47,6 @@ async function loadData() {
   const cached = sessionStorage.getItem('gastroSets')
   if (cached) {
     rows.value = JSON.parse(cached)
-    console.log('✅ Используем gastroSets из sessionStorage')
     return
   }
 
@@ -55,7 +54,6 @@ async function loadData() {
     const response = await fetch(API_URL)
     rows.value = await response.json()
     sessionStorage.setItem('gastroSets', JSON.stringify(rows.value))
-    console.log('✅ Сохранили gastroSets в sessionStorage')
   } catch (e) {
     console.error('❌ Ошибка при загрузке gastroSets:', e)
   }
