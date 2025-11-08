@@ -35,7 +35,7 @@ function booleanColumn(label, field) {
 
 columns.value = [
   {label: 'Фото', field: 'imageLink', sortable: false},
-  {label: 'Вес', field: 'weight', sortable: true},
+  {label: 'Вес', field: 'weight', sortable: true, type: 'number'},
   booleanColumn('На вынос', 'eatOutside'),
   booleanColumn('Бронь', 'bookingPossibility'),
   {label: 'Гастрофест', field: 'gastrofest', sortable: true},
@@ -84,15 +84,18 @@ function goToMeals(row) {
 </script>
 
 <template>
-  <div class="max-w-6xl mx-auto bg-white shadow rounded-2xl p-6">
-    <VueGoodTable
-        :columns="columns"
-        :rows="rows"
-        style-class="vgt-table striped bordered"
-    >
-      <template #table-row="props">
-        <!-- 🖼 Фото -->
-        <span v-if="props.column.field === 'imageLink'">
+  <div role="page-container">
+    <div class="max-w-6xl mx-auto bg-white shadow rounded-2xl p-6">
+      <div class="inline-block mx-auto border rounded-lg shadow-md p-4 bg-white"
+           style="max-width: 1000px;">
+        <VueGoodTable
+            :columns="columns"
+            :rows="rows"
+            style-class="vgt-table striped bordered"
+        >
+          <template #table-row="props">
+            <!-- 🖼 Фото -->
+            <span v-if="props.column.field === 'imageLink'">
           <img
               :src="props.row.imageLink"
               class="thumb"
@@ -101,16 +104,16 @@ function goToMeals(row) {
           />
         </span>
 
-        <!-- ✅❌ -->
-        <span
-            v-else-if="['eatOutside', 'bookingPossibility', 'restaurant'].includes(props.column.field)"
-        >
+            <!-- ✅❌ -->
+            <span
+                v-else-if="['eatOutside', 'bookingPossibility', 'restaurant'].includes(props.column.field)"
+            >
           <span v-if="props.row[props.column.field]" class="text-green-600 text-lg">✅</span>
           <span v-else class="text-red-500 text-lg">❌</span>
         </span>
 
-        <!-- 🔗 Заведение -->
-        <span v-else-if="props.column.field === 'participant'">
+            <!-- 🔗 Заведение -->
+            <span v-else-if="props.column.field === 'participant'">
           <a
               :href="props.row.url"
               target="_blank"
@@ -123,12 +126,14 @@ function goToMeals(row) {
           </a>
         </span>
 
-        <!-- 📄 Остальные -->
-        <span v-else>
+            <!-- 📄 Остальные -->
+            <span v-else>
           {{ props.formattedRow[props.column.field] }}
         </span>
-      </template>
-    </VueGoodTable>
+          </template>
+        </VueGoodTable>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -146,7 +151,23 @@ function goToMeals(row) {
   cursor: pointer;
   transition: transform 0.15s ease;
 }
+
 .thumb:hover {
   transform: scale(1.05);
+}
+
+div[role="page-container"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+div[role="page-container"] * {
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
