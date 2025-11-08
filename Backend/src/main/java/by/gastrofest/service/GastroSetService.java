@@ -43,6 +43,11 @@ public class GastroSetService {
         return mapper.toGastroSetDto(all);
     }
 
+    public GastroSetDto getById(final Long id) {
+        final GastroSetDbo gastroSetDbo = repository.findById(id).orElseThrow();
+        return mapper.toGastroSetDto(gastroSetDbo);
+    }
+
     @Transactional
     @SuppressWarnings("UnusedReturnValue")
     public GastroSetDbo save(final GastroSetDbo gastroSetDbo) {

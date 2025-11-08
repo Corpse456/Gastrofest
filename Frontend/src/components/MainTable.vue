@@ -1,22 +1,26 @@
 <script setup>
 import {onMounted, ref} from 'vue'
+import {useRouter} from 'vue-router'
 import {VueGoodTable} from 'vue-good-table-next'
-import 'vue-good-table-next/dist/vue-good-table-next.css'
 
+const router = useRouter()
 const rows = ref([])
-const API_URL = '/api/gastroset';
+const columns = ref([])
+const API_URL = '/api/gastroset'
 
 function boolFilterOptions() {
   return {
-    placeholder: "Все",
+    placeholder: 'Все',
     enabled: true,
     filterDropdownItems: ['Да', 'Нет'],
     filterFn: (rowValue, filterText) => {
       if (!filterText) return true
-      return (filterText === 'Да' && rowValue === true) ||
+      return (
+          (filterText === 'Да' && rowValue === true) ||
           (filterText === 'Нет' && rowValue === false)
-    }
-  };
+      )
+    },
+  }
 }
 
 function booleanColumn(label, field) {
@@ -25,50 +29,64 @@ function booleanColumn(label, field) {
     field,
     sortable: false,
     tdClass: 'bool-cell',
-    filterOptions: boolFilterOptions()
-  };
+    filterOptions: boolFilterOptions(),
+  }
 }
 
-const columns = ref([
+columns.value = [
   {label: 'Фото', field: 'imageLink', sortable: false},
-  {label: 'Вес', field: 'weight', sortable: true, type: 'number'},
+  {label: 'Вес', field: 'weight', sortable: true},
   booleanColumn('На вынос', 'eatOutside'),
   booleanColumn('Бронь', 'bookingPossibility'),
-  {label: 'Гастрофест', field: 'gastrofest', sortable: true}, // пока без фильтра
-  {label: 'Заведение', field: 'participant', sortable: true, tdClass: 'participant-cell'},
+  {label: 'Гастрофест', field: 'gastrofest', sortable: true},
+  {label: 'Заведение', field: 'participant', sortable: true},
   booleanColumn('Ресторан', 'restaurant'),
-])
+]
 
-onMounted(async () => {
+async function loadData() {
+  const cached = sessionStorage.getItem('gastroSets')
+  if (cached) {
+    rows.value = JSON.parse(cached)
+    console.log('✅ Используем gastroSets из sessionStorage')
+    return
+  }
+
   try {
     const response = await fetch(API_URL)
-    if (!response.ok) throw new Error('Ошибка загрузки данных')
     rows.value = await response.json()
+    sessionStorage.setItem('gastroSets', JSON.stringify(rows.value))
+    console.log('✅ Сохранили gastroSets в sessionStorage')
+  } catch (e) {
+    console.error('❌ Ошибка при загрузке gastroSets:', e)
+  }
+}
 
-    // После загрузки — добавляем фильтр
-    const uniqueFests = [...new Set(rows.value.map(r => r.gastrofest))].filter(Boolean)
-    const lastFest = uniqueFests.at(-1)
-    const festColumn = columns.value.find(c => c.field === 'gastrofest')
-    festColumn.filterOptions = {
-      enabled: true,
-      placeholder: 'Все',
-      filterDropdownItems: uniqueFests,
-      filterFn: (rowValue, filterText) => {
-        if (!filterText) return true
-        return rowValue === filterText
-      },
-      filterValue: lastFest
-    }
-  } catch (err) {
-    console.error('Ошибка при получении данных:', err)
+onMounted(async () => {
+  await loadData();
+  // После загрузки — добавляем фильтр
+  const uniqueFests = [...new Set(rows.value.map(r => r.gastrofest))].filter(Boolean)
+  const lastFest = uniqueFests.at(-1)
+  const festColumn = columns.value.find(c => c.field === 'gastrofest')
+  festColumn.filterOptions = {
+    enabled: true,
+    placeholder: 'Все',
+    filterDropdownItems: uniqueFests,
+    filterFn: (rowValue, filterText) => {
+      if (!filterText) return true
+      return rowValue === filterText
+    },
+    filterValue: lastFest
   }
 })
+
+function goToMeals(row) {
+  sessionStorage.setItem('lastGastroSet', JSON.stringify(row))
+  router.push({path: `/meals/${row.id}`})
+}
 </script>
 
 <template>
   <div class="max-w-6xl mx-auto bg-white shadow rounded-2xl p-6">
-    <h1 class="text-2xl font-bold mb-4 text-center">Меню</h1>
-
     <VueGoodTable
         :columns="columns"
         :rows="rows"
@@ -77,31 +95,37 @@ onMounted(async () => {
       <template #table-row="props">
         <!-- 🖼 Фото -->
         <span v-if="props.column.field === 'imageLink'">
+          <img
+              :src="props.row.imageLink"
+              class="thumb"
+              @click="goToMeals(props.row)"
+              title="Посмотреть блюда"
+          />
+        </span>
+
+        <!-- ✅❌ -->
+        <span
+            v-else-if="['eatOutside', 'bookingPossibility', 'restaurant'].includes(props.column.field)"
+        >
+          <span v-if="props.row[props.column.field]" class="text-green-600 text-lg">✅</span>
+          <span v-else class="text-red-500 text-lg">❌</span>
+        </span>
+
+        <!-- 🔗 Заведение -->
+        <span v-else-if="props.column.field === 'participant'">
           <a
               :href="props.row.url"
               target="_blank"
               rel="noopener noreferrer"
-              title="Открыть страницу"
+              class="text-blue-600 hover:underline"
           >
-            <img :src="props.row.imageLink" class="thumb"/>
+            <div v-for="line in props.row.participant.split('\n')" :key="line">
+              {{ line }}
+            </div>
           </a>
         </span>
 
-        <!-- ✅❌ Булевые поля -->
-        <span v-else-if="['eatOutside', 'bookingPossibility', 'restaurant'].includes(props.column.field)">
-          <span
-              v-if="props.row[props.column.field]"
-              class="text-green-600 text-lg"
-              title="Да"
-          >✅</span>
-          <span
-              v-else
-              class="text-red-500 text-lg"
-              title="Нет"
-          >❌</span>
-        </span>
-
-        <!-- 📄 Остальные поля -->
+        <!-- 📄 Остальные -->
         <span v-else>
           {{ props.formattedRow[props.column.field] }}
         </span>
@@ -117,9 +141,6 @@ onMounted(async () => {
   vertical-align: middle;
 }
 
-:deep(.vgt-table td.participant-cell) {
-  white-space: pre-line; /* ✅ сохраняет \n как переносы */
-}
 .thumb {
   width: 300px;
   border-radius: 8px;
