@@ -18,7 +18,6 @@ import static by.gastrofest.utils.HttpUtil.getEncodedString;
 
 @Service
 @RequiredArgsConstructor
-
 public class GastrofestService {
 
     private final GastrofestRepository repository;
@@ -33,7 +32,7 @@ public class GastrofestService {
                 .orElseGet(() -> repository.save(gastrofestDbo));
     }
 
-    public GastroFestDbo extractGastrofestFromElement(final Document document) {
+    public static GastroFestDbo extractGastrofestFromElement(final Document document) {
         final var mainElement = document.getElementsByClass(MAIN_POST_CLASS).get(0);
         final var gastrofestName = mainElement.getElementsByClass(TITLE_CLASS).get(0).text();
         final var imageLink = mainElement.getElementsByTag(IMG_TAG).get(0).absUrl(SRC_PROPERTY);
