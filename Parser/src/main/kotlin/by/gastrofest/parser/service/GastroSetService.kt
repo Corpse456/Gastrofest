@@ -13,7 +13,6 @@ import by.gastrofest.parser.constant.SET_INFO_CLASS
 import by.gastrofest.parser.constant.SRC_PROPERTY
 import by.gastrofest.parser.constant.TO_TAKE_CLASS
 import by.gastrofest.parser.constant.WEIGHT_WORD
-import by.gastrofest.parser.getEncodedString
 import by.gastrofest.parser.model.GastroSet
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
@@ -25,9 +24,8 @@ import java.util.stream.Collectors
 fun extractGastroSetInfoFromMainPage(element: Element): GastroSet {
     val imageElement = element.getElementsByClass(IMAGE_CLASS)[0]
     val imageLink = imageElement.absUrl(SRC_PROPERTY).split("\\?")[0]
-    val imageBase64 = getEncodedString(imageLink)
     val url: String = MAIN_PAGE_URL + Objects.requireNonNull<Element?>(imageElement.parent()).attr(HREF_PROPERTY)
-    return GastroSet(imageBase64 = imageBase64, imageLink = imageLink, url = url)
+    return GastroSet(imageLink = imageLink, url = url)
 }
 
 fun updateGastroSetFromGastroSetPage(gastroSetDocument: Document, gastroSet: GastroSet) {

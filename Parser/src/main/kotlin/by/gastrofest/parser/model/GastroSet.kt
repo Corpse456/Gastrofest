@@ -2,7 +2,6 @@ package by.gastrofest.parser.model
 
 data class GastroSet(
     var id: Long? = null,
-    var imageBase64: String? = null,
     var imageLink: String? = null,
     val url: String,
     var weight: Int? = null,

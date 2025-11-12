@@ -131,4 +131,9 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="remove_base64_columns" author="neznaev">
+        <dropColumn tableName="gastrofest" columnName="image_base64"/>
+        <dropColumn tableName="gastroset" columnName="image_base64"/>
+    </changeSet>
 </databaseChangeLog>

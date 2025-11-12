@@ -3,12 +3,10 @@ package by.gastrofest.parser
 import org.codehaus.httpcache4j.uri.URIBuilder
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import java.io.BufferedInputStream
 import java.io.BufferedReader
 import java.io.DataOutputStream
 import java.io.InputStreamReader
 import java.net.URL
-import java.util.*
 import javax.net.ssl.HttpsURLConnection
 
 private const val POST = "POST"
@@ -19,13 +17,6 @@ private const val DELETE = "DELETE"
 fun getDocument(url: String): Document {
     val content: String = sendGet(url)
     return Jsoup.parse(content)
-}
-
-fun getEncodedString(imageUrl: String?): String {
-    val url = URL(imageUrl)
-    val stream = BufferedInputStream(url.openConnection().getInputStream())
-
-    return Base64.getEncoder().encodeToString(stream.readAllBytes())
 }
 
 fun getUrlWithParameters(properties: Map<String?, List<String?>?>?, url: String?): String {

@@ -5,7 +5,6 @@ import by.gastrofest.parser.constant.IMG_TAG
 import by.gastrofest.parser.constant.LOCATION_CLASS
 import by.gastrofest.parser.constant.MAIN_POST_CLASS
 import by.gastrofest.parser.constant.SRC_PROPERTY
-import by.gastrofest.parser.getEncodedString
 import by.gastrofest.parser.model.GastroFest
 import org.jsoup.nodes.Document
 import java.time.LocalDate
@@ -14,13 +13,12 @@ fun extractGastrofestFromElement(document: Document): GastroFest {
     val mainElement = document.getElementsByClass(MAIN_POST_CLASS)[0]
     val gastrofestName = mainElement.getElementsByClass(GASTROFEST_TITLE_CLASS)[0].text()
     val imageLink = mainElement.getElementsByTag(IMG_TAG)[0].absUrl(SRC_PROPERTY)
-    val imageBase64: String = getEncodedString(imageLink)
     val locationTexts = mainElement.getElementsByClass(LOCATION_CLASS)[0].text().split("\\|".toRegex())
     val locations = locationTexts[0].trim()
     val dates = locationTexts[1].trim().split(" - ")
     val startDate = parseDate(dates, 0)
     val endDate = parseDate(dates, 1)
-    return GastroFest(null, gastrofestName, imageBase64, imageLink, locations, startDate, endDate)
+    return GastroFest(null, gastrofestName, imageLink, locations, startDate, endDate)
 }
 
 private fun parseDate(dates: List<String>, range: Int): LocalDate {
