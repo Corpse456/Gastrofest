@@ -4,37 +4,36 @@ import by.gastrofest.parser.constant.MAIN_PAGE_URL
 import by.gastrofest.parser.constant.NODE_RECORD_CLASS
 import by.gastrofest.parser.getDocument
 import by.gastrofest.parser.model.GastroFest
+import by.gastrofest.parser.model.GastroSet
+import by.gastrofest.parser.model.Participant
 import org.jsoup.nodes.Document
+import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 
 class ParserService(
-    val gastrofestCommonService: GastrofestCommonService
+    private val gastrofestCommonService: GastrofestCommonService
 ) {
 
-    fun parseMainPage() {
+    fun parseMainPage(): List<GastroSet> {
         val document: Document = getDocument(MAIN_PAGE_URL)
         val gastroFest: GastroFest = extractGastrofestFromElement(document)
         if (!gastrofestCommonService.shouldContinue(gastroFest)) {
-            return
+            return emptyList()
         }
 
         val participantsNodes: Elements = document.getElementsByClass(NODE_RECORD_CLASS)
-        for (participantsNode in participantsNodes) {
-            parseGastroSet(participantsNode, gastroFest)
-        }
+        return participantsNodes.map { parseGastroSet(it, gastroFest) }
     }
 
-    private fun parseGastroSet(participantsNode: org.jsoup.nodes.Element, savedGastrofest: GastroFest) {
-        val gastroSetDbo: GastroSetDbo = gastroSetService.extractGastroSetInfoFromMainPage(participantsNode)
-        val gastroSetDocument: Document =
-            by.gastrofest.utils.HttpUtil.getDocument(gastroSetDbo.getUrl())
-        gastroSetService.updateGastroSetFromGastroSetPage(gastroSetDocument, gastroSetDbo)
+    private fun parseGastroSet(participantsNode: Element, savedGastrofest: GastroFest): GastroSet {
+        val gastroSet: GastroSet = extractGastroSetInfoFromMainPage(participantsNode)
+        val gastroSetDocument: Document = getDocument(gastroSet.url)
+        updateGastroSetFromGastroSetPage(gastroSetDocument, gastroSet)
 
-        var participant: ParticipantDbo = participantService.getParticipantFromGastroSetPage(gastroSetDocument)
-        participant = participantService.save(participant)
+        val participant: Participant = getParticipantFromGastroSetPage(gastroSetDocument)
 
-        gastroSetDbo.setGastrofest(savedGastrofest)
-        gastroSetDbo.setParticipant(participant)
-        gastroSetService.save(gastroSetDbo)
+        gastroSet.gastrofest = savedGastrofest
+        gastroSet.participant = participant
+        return gastroSet
     }
 }

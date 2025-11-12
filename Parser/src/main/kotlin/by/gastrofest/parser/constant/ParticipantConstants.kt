@@ -28,6 +28,10 @@ const val RESTAURANT_WORD = "ресторан"
 
 const val WEIGHT_WORD = "вес"
 
+const val NOT_WORKING_DAY = "выходной"
+
+const val DAY_TIME_DELIMETR = ": "
+
 val REPLACE_WORDS = arrayOf(
     "\"", "«", "»",
     "национальной белорусско-украинской кухни "

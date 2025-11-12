@@ -1,5 +1,6 @@
 package by.gastrofest.service;
 
+import by.gastrofest.parser.service.ParserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -11,11 +12,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class SchedulingService {
 
+    private final PersistenceService persistenceService;
+
     private final ParserService parserService;
 
     @EventListener(ApplicationReadyEvent.class)
     public void readInfo() {
-        parserService.parseMainPage();
+        final var gastroSets = parserService.parseMainPage();
+        persistenceService.saveGastrofestInfos(gastroSets);
         log.info("Update done");
     }
 

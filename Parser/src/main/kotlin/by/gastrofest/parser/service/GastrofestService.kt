@@ -15,21 +15,18 @@ fun extractGastrofestFromElement(document: Document): GastroFest {
     val gastrofestName = mainElement.getElementsByClass(GASTROFEST_TITLE_CLASS)[0].text()
     val imageLink = mainElement.getElementsByTag(IMG_TAG)[0].absUrl(SRC_PROPERTY)
     val imageBase64: String = getEncodedString(imageLink)
-    val locationText = mainElement.getElementsByClass(LOCATION_CLASS)[0].text()
-    val locations =
-        locationText.split("\\|".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0].trim { it <= ' ' }
-    val dates =
-        locationText.split("\\|".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1].trim { it <= ' ' }
-            .split(" - ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+    val locationTexts = mainElement.getElementsByClass(LOCATION_CLASS)[0].text().split("\\|".toRegex())
+    val locations = locationTexts[0].trim()
+    val dates = locationTexts[1].trim().split(" - ")
     val startDate = parseDate(dates, 0)
     val endDate = parseDate(dates, 1)
-    return GastroFest(null, gastrofestName, locations, imageLink, imageBase64, startDate, endDate)
+    return GastroFest(null, gastrofestName, imageBase64, imageLink, locations, startDate, endDate)
 }
 
-private fun parseDate(dates: Array<String>, range: Int): LocalDate {
+private fun parseDate(dates: List<String>, range: Int): LocalDate {
     return LocalDate.of(
         LocalDate.now().year,
-        dates[range].split("\\.".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1].toInt(),
-        dates[range].split("\\.".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0].toInt()
+        dates[range].split("\\.".toRegex())[1].toInt(),
+        dates[range].split("\\.".toRegex())[0].toInt()
     )
 }

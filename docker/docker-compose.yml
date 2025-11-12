@@ -6,10 +6,11 @@ services:
         ports:
             - '5432:5432'
         environment:
-            POSTGRES_PASSWORD: postgres
+            POSTGRES_USER: gastrofest
+            POSTGRES_PASSWORD: gastrofest
+            POSTGRES_DB: gastrofest
         volumes:
-            - ./db/init.sql:/docker-entrypoint-initdb.d/1.init.sql
-            - ./db/dump.sql:/docker-entrypoint-initdb.d/2.dump.sql
+            - ./db/dump.sql:/docker-entrypoint-initdb.d/dump.sql
     frontend:
         build:
             context: ../Frontend

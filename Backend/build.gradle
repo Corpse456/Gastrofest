@@ -4,6 +4,8 @@ plugins {
 dependencies {
     annotationProcessor "org.mapstruct:mapstruct-processor:$mapStructVersion"
 
+    implementation(project(":Parser"))
+
     implementation "org.mapstruct:mapstruct:$mapStructVersion"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa:$springVersion"
     implementation "org.springframework.boot:spring-boot-starter-web:$springVersion"
