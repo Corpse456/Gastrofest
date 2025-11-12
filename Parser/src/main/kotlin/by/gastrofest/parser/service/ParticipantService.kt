@@ -35,11 +35,10 @@ fun getParticipantFromGastroSetPage(gastroSetDocument: Document): Participant {
 }
 
 private fun executeTitle(gastroSetDocument: Document): String {
-    var titleElementText = gastroSetDocument.getElementsByClass(PARTICIPANT_TITLE_CLASS).text()
-    for (word in REPLACE_WORDS) {
-        titleElementText = titleElementText.replace(word, "")
-    }
-    return titleElementText
+    return gastroSetDocument.getElementsByClass(PARTICIPANT_TITLE_CLASS)
+        .text()
+        .replace(REPLACE_WORDS.joinToString("|").toRegex(), "")
+        .trim()
 }
 
 private fun executePhone(participantInfoDocument: Document): String? {

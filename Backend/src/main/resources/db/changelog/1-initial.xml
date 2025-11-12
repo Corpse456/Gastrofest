@@ -129,4 +129,20 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="rename_booking_possibility_and_add_delivery" author="neznaev">
+        <renameColumn
+                tableName="gastroset"
+                oldColumnName="booking_possibility"
+                newColumnName="booking"
+                columnDataType="boolean"/>
+
+        <addColumn tableName="gastroset">
+            <column name="delivery" type="boolean" defaultValueBoolean="false"/>
+        </addColumn>
+
+        <addColumn tableName="gastroset">
+            <column name="theme" type="varchar(100)"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

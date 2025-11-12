@@ -32,11 +32,15 @@ public class GastroSetDbo {
 
     private String url;
 
+    private String theme;
+
     private Integer weight;
 
     private Boolean eatOutside;
 
-    private Boolean bookingPossibility;
+    private Boolean booking;
+
+    private Boolean delivery;
 
     @ElementCollection
     @CollectionTable(

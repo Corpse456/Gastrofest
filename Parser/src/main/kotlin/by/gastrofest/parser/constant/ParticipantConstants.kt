@@ -8,6 +8,8 @@ const val IMAGE_CLASS = "img-responsive"
 
 const val INFO_SUMMARY_CLASS = "field-type-text-with-summary"
 
+const val THEME_CLASS = "field-name-field-shevtext"
+
 const val SET_INFO_CLASS = "field-item even"
 
 const val DESCRIPTION_CLASS = "field-name-field-restext"
@@ -17,6 +19,8 @@ const val POSITIVE_POSSIBILITY = "ЕСТЬ"
 const val TO_TAKE_CLASS = "field-name-field-totake"
 
 const val RESERVED_CLASS = "field-name-field-reservied"
+
+const val DELIVERY_CLASS = "field-name-field-delivery"
 
 const val PHONE_CLASS = "field-name-field-telefon"
 
