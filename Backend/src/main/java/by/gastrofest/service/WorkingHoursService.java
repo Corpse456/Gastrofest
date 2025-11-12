@@ -3,9 +3,9 @@ package by.gastrofest.service;
 import by.gastrofest.dbo.ParticipantDbo;
 import by.gastrofest.dbo.WorkingHoursDbo;
 import by.gastrofest.repository.WorkingHoursRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor

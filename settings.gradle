@@ -8,3 +8,5 @@ plugins {
 }
 rootProject.name = 'Gastrofest'
 include 'Backend'
+include 'Parser'
+

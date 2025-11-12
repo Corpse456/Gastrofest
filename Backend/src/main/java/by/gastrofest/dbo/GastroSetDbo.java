@@ -28,8 +28,6 @@ public class GastroSetDbo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String imageBase64;
-
     private String imageLink;
 
     private String url;
@@ -64,8 +62,7 @@ public class GastroSetDbo {
     @JoinColumn(name = "participant_id")
     private ParticipantDbo participant;
 
-    public GastroSetDbo(final String imageBase64, final String imageLink, final String url) {
-        this.imageBase64 = imageBase64;
+    public GastroSetDbo(final String imageLink, final String url) {
         this.imageLink = imageLink;
         this.url = url;
     }

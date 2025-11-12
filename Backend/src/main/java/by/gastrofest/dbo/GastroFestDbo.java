@@ -24,8 +24,6 @@ public class GastroFestDbo {
 
     private String title;
 
-    private String imageBase64;
-
     private String imageLink;
 
     private String locations;
@@ -37,13 +35,11 @@ public class GastroFestDbo {
     public GastroFestDbo(final String title,
             final String locations,
             final String imageLink,
-            final String imageBase64,
             final LocalDate startDate,
             final LocalDate endDate) {
         this.title = title;
         this.locations = locations;
         this.imageLink = imageLink;
-        this.imageBase64 = imageBase64;
         this.startDate = startDate;
         this.endDate = endDate;
     }

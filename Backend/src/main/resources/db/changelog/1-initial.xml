@@ -11,7 +11,6 @@
                              primaryKey="true"/>
             </column>
             <column name="title" type="varchar(100)"/>
-            <column name="image_base64" type="text"/>
             <column name="image_link" type="varchar(255)"/>
             <column name="locations" type="varchar(100)"/>
             <column name="start_date" type="date"/>
@@ -47,7 +46,6 @@
                 <constraints primaryKeyName="gastroset_pk"
                              primaryKey="true"/>
             </column>
-            <column name="image_base64" type="text"/>
             <column name="image_link" type="varchar(255)"/>
             <column name="url" type="varchar(255)"/>
             <column name="weight" type="int"/>

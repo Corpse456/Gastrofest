@@ -14,7 +14,7 @@ export default defineConfig({
         host: true,
         proxy: {
             '/api/gastroset': {
-                target: 'http://localhost:8090/gastrofest',
+                target: 'http://host.docker.internal:8090/gastrofest',
                 changeOrigin: true,
             },
         },

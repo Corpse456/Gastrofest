@@ -1,0 +1,32 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+group = "by.gastrofest.parser"
+version = "0.0.1-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jsoup:jsoup:$jsoupVersion"
+    implementation "org.codehaus.httpcache4j.uribuilder:uribuilder:$uriBuilderVersion"
+
+    testImplementation "org.jetbrains.kotlin:kotlin-test"
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+kotlin {
+    jvmToolchain(17)
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
