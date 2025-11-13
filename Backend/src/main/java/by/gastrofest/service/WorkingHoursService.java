@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-
 public class WorkingHoursService {
 
     private final WorkingHoursRepository repository;

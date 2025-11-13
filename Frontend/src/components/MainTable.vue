@@ -37,23 +37,37 @@ columns.value = [
   {label: 'Фото', field: 'imageLink', sortable: false},
   {label: 'Вес', field: 'weight', sortable: true, type: 'number'},
   booleanColumn('На вынос', 'eatOutside'),
-  booleanColumn('Бронь', 'bookingPossibility'),
+  booleanColumn('Бронь', 'booking'),
+  booleanColumn('Доставка', 'delivery'),
   {label: 'Гастрофест', field: 'gastrofest', sortable: true},
   {label: 'Заведение', field: 'participant', sortable: true},
   booleanColumn('Ресторан', 'restaurant'),
 ]
 
 async function loadData() {
-  const cached = sessionStorage.getItem('gastroSets')
-  if (cached) {
-    rows.value = JSON.parse(cached)
-    return
+  try {
+    const cachedRaw = sessionStorage.getItem('gastroSets')
+    const cached = JSON.parse(cachedRaw)
+    const now = Date.now()
+
+    if (cached?.timestamp && (now - cached.timestamp) < 24 * 60 * 60 * 1000 && Array.isArray(cached.data) && cached.data.length > 0) {
+      rows.value = cached.data
+      return
+    } else {
+      sessionStorage.removeItem('gastroSets')
+    }
+  } catch {
+    sessionStorage.removeItem('gastroSets')
   }
 
   try {
     const response = await fetch(API_URL)
-    rows.value = await response.json()
-    sessionStorage.setItem('gastroSets', JSON.stringify(rows.value))
+    const data = await response.json()
+    if (Array.isArray(data) && data.length > 0) {
+      rows.value = data
+      sessionStorage.setItem( 'gastroSets', JSON.stringify({ data, timestamp: Date.now() })
+      )
+    }
   } catch (e) {
     console.error('❌ Ошибка при загрузке gastroSets:', e)
   }
@@ -103,11 +117,16 @@ function goToMeals(row) {
           </span>
 
           <!-- ✅❌ -->
-          <span
-              v-else-if="['eatOutside', 'bookingPossibility', 'restaurant'].includes(props.column.field)"
-          >
-            <span v-if="props.row[props.column.field]" class="text-green-500 text-lg">✅</span>
-            <span v-else class="text-red-400 text-lg">❌</span>
+          <span v-else-if="['eatOutside', 'booking', 'delivery', 'restaurant'].includes(props.column.field)">
+            <template v-if="props.row[props.column.field] === true">
+              <span class="text-green-500 text-lg">✅</span>
+            </template>
+            <template v-else-if="props.row[props.column.field] === false">
+              <span class="text-red-400 text-lg">❌</span>
+            </template>
+            <template v-else>
+              <!-- пусто, если null -->
+            </template>
           </span>
 
           <!-- 🔗 Заведение -->
@@ -153,7 +172,7 @@ div[role="page-container"] {
   padding: 24px;
   border-radius: 16px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
-  max-width: 1000px;
+  max-width: 1300px;
   width: 90%;
   overflow-x: auto;
 }

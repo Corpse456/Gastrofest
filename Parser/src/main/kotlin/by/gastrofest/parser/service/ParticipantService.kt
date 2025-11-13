@@ -1,7 +1,6 @@
 package by.gastrofest.parser.service
 
 import by.gastrofest.parser.constant.DAY_TIME_DELIMETR
-import by.gastrofest.parser.constant.DESCRIPTION_CLASS
 import by.gastrofest.parser.constant.HREF_PROPERTY
 import by.gastrofest.parser.constant.PARTICIPANT_TITLE_CLASS
 import by.gastrofest.parser.constant.PHONE_CLASS
@@ -22,24 +21,21 @@ fun getParticipantFromGastroSetPage(gastroSetDocument: Document): Participant {
     val title = executeTitle(gastroSetDocument)
     val street = gastroSetDocument.getElementsByClass(STREET_CLASS).text()
     val phone = executePhone(gastroSetDocument)
-    val description = executeDescription(gastroSetDocument)
     val workingHours: Set<WorkingHours> = executeWorkingHours(gastroSetDocument)
     return Participant(
         title = title,
         address = street,
         phone = phone,
-        description = description,
         workingHours = workingHours,
         restaurant = isRestaurant(title)
     )
 }
 
 private fun executeTitle(gastroSetDocument: Document): String {
-    var titleElementText = gastroSetDocument.getElementsByClass(PARTICIPANT_TITLE_CLASS).text()
-    for (word in REPLACE_WORDS) {
-        titleElementText = titleElementText.replace(word, "")
-    }
-    return titleElementText
+    return gastroSetDocument.getElementsByClass(PARTICIPANT_TITLE_CLASS)
+        .text()
+        .replace(REPLACE_WORDS.joinToString("|").toRegex(), "")
+        .trim()
 }
 
 private fun executePhone(participantInfoDocument: Document): String? {
@@ -53,17 +49,6 @@ private fun executePhone(participantInfoDocument: Document): String? {
             .split(": ")[1]
             .trim()
             .split("\\+".toRegex())[1]
-    }
-}
-
-private fun executeDescription(participantInfoDocument: Document): String? {
-    return if (participantInfoDocument.hasClass(DESCRIPTION_CLASS)) {
-        participantInfoDocument.getElementsByClass(DESCRIPTION_CLASS)[0]
-            .getElementsByClass(SET_INFO_CLASS)[0]
-            .childNodes()[0]
-            .toString()
-    } else {
-        null
     }
 }
 

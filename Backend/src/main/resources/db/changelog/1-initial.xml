@@ -11,10 +11,10 @@
                              primaryKey="true"/>
             </column>
             <column name="title" type="varchar(100)"/>
-            <column name="image_link" type="varchar(255)"/>
             <column name="locations" type="varchar(100)"/>
             <column name="start_date" type="date"/>
             <column name="end_date" type="date"/>
+            <column name="image_link" type="varchar(255)"/>
         </createTable>
 
         <addUniqueConstraint constraintName="unique_gastrofest"
@@ -31,7 +31,6 @@
             <column name="title" type="varchar(100)"/>
             <column name="address" type="varchar(100)"/>
             <column name="phone" type="varchar(20)"/>
-            <column name="description" type="text"/>
             <column name="restaurant" type="boolean"/>
         </createTable>
 
@@ -46,11 +45,11 @@
                 <constraints primaryKeyName="gastroset_pk"
                              primaryKey="true"/>
             </column>
-            <column name="image_link" type="varchar(255)"/>
-            <column name="url" type="varchar(255)"/>
+            <column name="theme" type="varchar(100)"/>
             <column name="weight" type="int"/>
+            <column name="delivery" type="boolean"/>
             <column name="eat_outside" type="boolean"/>
-            <column name="booking_possibility" type="boolean"/>
+            <column name="booking" type="boolean"/>
             <column name="gastrofest_id" type="bigint(20)">
                 <constraints referencedTableName="gastrofest"
                              referencedColumnNames="id"
@@ -63,6 +62,8 @@
                              foreignKeyName="gastroset_fk_participant_id"
                              deleteCascade="true"/>
             </column>
+            <column name="image_link" type="varchar(255)"/>
+            <column name="url" type="varchar(255)"/>
         </createTable>
 
         <addUniqueConstraint constraintName="unique_gastroset"

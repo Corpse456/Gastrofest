@@ -46,6 +46,7 @@ function goBack() {
       <div class="max-w-3xl w-full mx-auto text-center flex flex-col items-center space-y-8 px-4">
         <!-- Заголовок -->
         <h1 class="text-3xl font-bold mb-4">{{ gastroSet.participant }}</h1>
+        <h1 class="text-3xl font-bold mb-4">{{ "«" + gastroSet.theme + "»" }}</h1>
 
         <!-- Описания блюд -->
         <div
