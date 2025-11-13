@@ -1,4 +1,3 @@
-version: "3.8"
 services:
     postgres:
         image: postgres:16.4
@@ -10,7 +9,8 @@ services:
             POSTGRES_PASSWORD: gastrofest
             POSTGRES_DB: gastrofest
         volumes:
-            - ./db/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+            - postgres_data:/var/lib/postgresql/data
+            - ./db:/docker-entrypoint-initdb.d:ro
     frontend:
         build:
             context: ../Frontend
@@ -21,3 +21,5 @@ services:
         volumes:
             - ../Frontend:/usr/src/app
             - /usr/src/app/node_modules
+volumes:
+    postgres_data:

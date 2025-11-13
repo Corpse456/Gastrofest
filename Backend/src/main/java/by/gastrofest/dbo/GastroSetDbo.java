@@ -12,7 +12,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -21,7 +20,6 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "gastroset")
-@NoArgsConstructor
 public class GastroSetDbo {
 
     @Id
@@ -65,9 +63,4 @@ public class GastroSetDbo {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "participant_id")
     private ParticipantDbo participant;
-
-    public GastroSetDbo(final String imageLink, final String url) {
-        this.imageLink = imageLink;
-        this.url = url;
-    }
 }

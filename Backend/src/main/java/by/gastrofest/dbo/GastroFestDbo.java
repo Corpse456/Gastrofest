@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -15,7 +14,6 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "gastrofest")
-@NoArgsConstructor
 public class GastroFestDbo {
 
     @Id
@@ -31,16 +29,4 @@ public class GastroFestDbo {
     private LocalDate startDate;
 
     private LocalDate endDate;
-
-    public GastroFestDbo(final String title,
-            final String locations,
-            final String imageLink,
-            final LocalDate startDate,
-            final LocalDate endDate) {
-        this.title = title;
-        this.locations = locations;
-        this.imageLink = imageLink;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
 }

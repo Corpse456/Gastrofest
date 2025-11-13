@@ -11,6 +11,7 @@
                              primaryKey="true"/>
             </column>
             <column name="title" type="varchar(100)"/>
+            <column name="image_base64" type="text"/>
             <column name="image_link" type="varchar(255)"/>
             <column name="locations" type="varchar(100)"/>
             <column name="start_date" type="date"/>
@@ -46,6 +47,7 @@
                 <constraints primaryKeyName="gastroset_pk"
                              primaryKey="true"/>
             </column>
+            <column name="image_base64" type="text"/>
             <column name="image_link" type="varchar(255)"/>
             <column name="url" type="varchar(255)"/>
             <column name="weight" type="int"/>
@@ -130,7 +132,13 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="remove_base64_columns" author="neznaev">
+        <dropColumn tableName="gastrofest" columnName="image_base64"/>
+        <dropColumn tableName="gastroset" columnName="image_base64"/>
+    </changeSet>
+
     <changeSet id="rename_booking_possibility_and_add_delivery" author="neznaev">
+        <!-- Переименование booking_possibility -> booking -->
         <renameColumn
                 tableName="gastroset"
                 oldColumnName="booking_possibility"
@@ -145,4 +153,9 @@
             <column name="theme" type="varchar(100)"/>
         </addColumn>
     </changeSet>
+
+    <changeSet id="remove_description_column" author="neznaev">
+        <dropColumn tableName="participant" columnName="description"/>
+    </changeSet>
+
 </databaseChangeLog>
