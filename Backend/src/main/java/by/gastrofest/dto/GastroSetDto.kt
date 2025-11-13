@@ -4,7 +4,7 @@ data class GastroSetDto(
     var id: Long,
     var imageLink: String,
     val url: String,
-    val theme: String,
+    val theme: String?,
     val weight: Int,
     val eatOutside: Boolean? = null,
     var booking: Boolean? = null,
