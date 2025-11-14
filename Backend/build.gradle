@@ -1,33 +1,13 @@
 plugins {
-    id "java" apply(true)
-    id "org.springframework.boot" version "$springVersion" apply(true)
 }
-
 dependencies {
-    implementation(project(":Parser"))
-
-    compileOnly "org.projectlombok:lombok:$lombokVersion"
-
-    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
     annotationProcessor "org.mapstruct:mapstruct-processor:$mapStructVersion"
 
-    runtimeOnly "org.postgresql:postgresql:$postgresVersion"
+    implementation(project(":Parser"))
 
-    implementation "org.liquibase:liquibase-core:$liquibaseVersion"
     implementation "org.mapstruct:mapstruct:$mapStructVersion"
-    implementation "org.springframework.boot:spring-boot-starter:$springVersion"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa:$springVersion"
     implementation "org.springframework.boot:spring-boot-starter-web:$springVersion"
-
-    testImplementation "org.springframework.boot:spring-boot-starter-test:$springVersion"
-
-    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
-    testCompileOnly "org.projectlombok:lombok:$lombokVersion"
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
 }
 
 bootJar {
