@@ -23,9 +23,6 @@ kotlin {
     jvmToolchain(17)
 }
 
-bootJar {
-    enabled = false
-}
 
 jar {
     enabled = true
