@@ -39,3 +39,4 @@ out/
 
 tokens/
 **/generated/
+local.properties
