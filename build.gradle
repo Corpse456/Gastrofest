@@ -1,5 +1,9 @@
-subprojects {
+buildscript {
     repositories {
+        google()
         mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinGradlePlugin"
     }
 }

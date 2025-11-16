@@ -1,13 +1,9 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version "$jetbrainsKotlinJvm"
+    id 'org.jetbrains.kotlin.jvm'
 }
 
 group = "by.gastrofest.parser"
 version = "0.0.1-SNAPSHOT"
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     implementation "org.jsoup:jsoup:$jsoupVersion"
