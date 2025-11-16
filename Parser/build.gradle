@@ -1,13 +1,17 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version "$kotlinGradlePlugin"
+    id 'org.jetbrains.kotlin.jvm' version "2.0.20"
 }
 
 group = "by.gastrofest.parser"
 version = "0.0.1-SNAPSHOT"
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
-    implementation "org.jsoup:jsoup:$jsoupVersion"
-    implementation "org.codehaus.httpcache4j.uribuilder:uribuilder:$uriBuilderVersion"
+    implementation "org.jsoup:jsoup:1.16.2"
+    implementation "org.codehaus.httpcache4j.uribuilder:uribuilder:2.0.0"
 
     testImplementation "org.jetbrains.kotlin:kotlin-test"
 }
