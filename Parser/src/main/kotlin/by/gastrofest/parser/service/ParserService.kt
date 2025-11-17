@@ -14,7 +14,7 @@ class ParserService(
     private val gastrofestCommonService: GastrofestCommonService
 ) {
 
-    fun parseMainPage(): List<GastroSet> {
+    fun getGastroSetsList(): List<GastroSet> {
         val document: Document = getDocument(MAIN_PAGE_URL)
         val gastroFest: GastroFest = extractGastrofestFromElement(document)
         if (!gastrofestCommonService.shouldContinue(gastroFest)) {

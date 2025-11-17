@@ -20,7 +20,7 @@ public class SchedulingService {
     @Transactional
     @EventListener(ApplicationReadyEvent.class)
     public void readInfo() {
-        final var gastroSets = parserService.parseMainPage();
+        final var gastroSets = parserService.getGastroSetsList();
         persistenceService.saveGastrofestInfos(gastroSets);
         log.info("Update done");
     }

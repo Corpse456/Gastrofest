@@ -22,6 +22,18 @@ public interface GastroSetMapper {
     GastroSetDbo toGastroSetDbo(final GastroSet gastroSet);
 
     default String combineParticipantFields(ParticipantDbo participantDbo) {
-        return participantDbo.getTitle() + "\n" + participantDbo.getAddress() + "\n" + participantDbo.getPhone();
+        return participantDbo.getTitle() + "\n" +
+               participantDbo.getAddress() + "\n" +
+               participantDbo.getPhone() + "\n" +
+               getWorkingHoursString(participantDbo);
+    }
+
+    private static String getWorkingHoursString(final ParticipantDbo participantDbo) {
+        final var mappedWorkingHours = participantDbo.getWorkingHours().stream()
+                .map(workingHoursDbo -> workingHoursDbo.getWeekDays() +
+                                        ": " + workingHoursDbo.getOpenTime() +
+                                        " - " + workingHoursDbo.getCloseTime())
+                .toList();
+        return String.join("\n" + mappedWorkingHours);
     }
 }
