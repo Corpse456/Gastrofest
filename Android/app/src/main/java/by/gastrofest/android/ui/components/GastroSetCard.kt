@@ -1,5 +1,8 @@
 package by.gastrofest.android.ui.components
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,35 +18,55 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import by.gastrofest.android.R
 import by.gastrofest.parser.model.GastroSet
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
 
 @Composable
 fun GastroSetCard(
     set: GastroSet,
-    modifier: Modifier = Modifier
+    modifier:
+    Modifier = Modifier
 ) {
+    val alpha by animateFloatAsState(
+        targetValue = 1f,
+        animationSpec = tween(600)
+    )
+
     Card(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .animateContentSize(),
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(6.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
-        Column(modifier = Modifier.padding(12.dp)) {
+        Column(modifier = Modifier.alpha(alpha)) {
             // Картинка участника
             AsyncImage(
-                model = set.imageLink,
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(set.imageLink)
+                    .crossfade(true)
+                    .build(),
                 contentDescription = set.participant?.title,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(180.dp)
                     .clip(RoundedCornerShape(12.dp)),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Crop,
+                placeholder = painterResource(id = R.drawable.placeholder),
+                error = painterResource(id = R.drawable.error_image)
             )
+
 
             Spacer(Modifier.height(8.dp))
 
