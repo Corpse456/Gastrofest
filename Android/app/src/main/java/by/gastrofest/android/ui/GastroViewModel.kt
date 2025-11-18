@@ -1,7 +1,7 @@
 package by.gastrofest.android.ui
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import android.content.Context
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import by.gastrofest.android.repository.GastroSetRepository
 import by.gastrofest.parser.model.GastroSet
@@ -11,10 +11,10 @@ import kotlinx.coroutines.launch
 
 
 class GastroViewModel(
-    application: Application,
-    private val repository: GastroSetRepository = GastroSetRepository()
-) : AndroidViewModel(application) {
+    private val context: Context
+) : ViewModel() {
 
+    private val repository: GastroSetRepository = GastroSetRepository()
     private val _state = MutableStateFlow<GastroUiState>(GastroUiState.Loading)
     val state: StateFlow<GastroUiState> = _state
 
@@ -27,7 +27,7 @@ class GastroViewModel(
             _state.value = GastroUiState.Loading
 
             try {
-                val fetched = repository.getGastroSets(getApplication())
+                val fetched = repository.getGastroSets(context)
                 if (fetched.isNotEmpty()) {
                     _state.value = GastroUiState.Success(fetched)
                 } else {
