@@ -32,18 +32,14 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 
 @Composable
-fun GastroSetCard(
-    set: GastroSet,
-    modifier:
-    Modifier = Modifier
-) {
+fun GastroSetCard(set: GastroSet) {
     val alpha by animateFloatAsState(
         targetValue = 1f,
         animationSpec = tween(600)
     )
 
     Card(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
             .animateContentSize(),
         shape = RoundedCornerShape(16.dp),
