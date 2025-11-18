@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
+    implementation("io.coil-kt:coil-compose:2.7.0")
 
     testImplementation(libs.junit)
 

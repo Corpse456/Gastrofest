@@ -15,8 +15,8 @@ class GastroViewModel(
 ) : ViewModel() {
 
     private val repository: GastroSetRepository = GastroSetRepository()
-    private val _state = MutableStateFlow<GastroUiState>(GastroUiState.Loading)
-    val state: StateFlow<GastroUiState> = _state
+    private val _state = MutableStateFlow<GastrofestUiState>(GastrofestUiState.Loading)
+    val state: StateFlow<GastrofestUiState> = _state
 
     init {
         load()
@@ -24,24 +24,24 @@ class GastroViewModel(
 
     private fun load() {
         viewModelScope.launch {
-            _state.value = GastroUiState.Loading
+            _state.value = GastrofestUiState.Loading
 
             try {
                 val fetched = repository.getGastroSets(context)
                 if (fetched.isNotEmpty()) {
-                    _state.value = GastroUiState.Success(fetched)
+                    _state.value = GastrofestUiState.Success(fetched)
                 } else {
-                    _state.value = GastroUiState.Error("Гастрофест закончился")
+                    _state.value = GastrofestUiState.Error("Гастрофест закончился")
                 }
             } catch (e: Exception) {
-                _state.value = GastroUiState.Error(e.message ?: "Ошибка загрузки")
+                _state.value = GastrofestUiState.Error(e.message ?: "Ошибка загрузки")
             }
         }
     }
 }
 
-sealed interface GastroUiState {
-    data object Loading : GastroUiState
-    data class Success(val sets: List<GastroSet>) : GastroUiState
-    data class Error(val errorMessage: String) : GastroUiState
+sealed interface GastrofestUiState {
+    data object Loading : GastrofestUiState
+    data class Success(val sets: List<GastroSet>) : GastrofestUiState
+    data class Error(val errorMessage: String) : GastrofestUiState
 }

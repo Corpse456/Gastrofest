@@ -14,6 +14,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import by.gastrofest.android.factory.GastroViewModelFactory
+import by.gastrofest.android.ui.components.GastroSetCard
 
 @Composable
 fun GastroScreen() {
@@ -22,16 +23,16 @@ fun GastroScreen() {
     val state = viewModel.state.collectAsState()
 
     when (val uiState = state.value) {
-        is GastroUiState.Loading -> Text("Загрузка...")
-        is GastroUiState.Error -> Text("Ошибка: ${uiState.errorMessage}")
-        is GastroUiState.Success -> {
+        is GastrofestUiState.Loading -> Text("Загрузка...")
+        is GastrofestUiState.Error -> Text("Ошибка: ${uiState.errorMessage}")
+        is GastrofestUiState.Success -> {
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(12.dp)
             ) {
                 items(uiState.sets) { set ->
-                    Text(set.participant?.title ?: "Без названия")
-                    Spacer(Modifier.height(8.dp))
+                    GastroSetCard(set)
+                    Spacer(Modifier.height(12.dp))
                 }
             }
         }
