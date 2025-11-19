@@ -12,13 +12,13 @@ import androidx.compose.ui.unit.dp
 import by.gastrofest.parser.model.GastroSet
 
 @Composable
-fun GastroList(sets: List<GastroSet>) {
+fun GastrofestList(sets: List<GastroSet>, onItemClick: (GastroSet) -> Unit) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(12.dp)
     ) {
         items(sets) { set ->
-            GastroSetCard(set)
+            GastroSetCard(set, onClick = { onItemClick(set) })
             Spacer(Modifier.height(12.dp))
         }
     }

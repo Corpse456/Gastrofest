@@ -31,6 +31,9 @@ class GastroSetRepository(
         }
 
         if (gastroSets.isNotEmpty()) {
+            for ((index, set) in gastroSets.withIndex()) {
+                gastroSets[index].id = index.toLong()
+            }
             saveToCache(context, gastroSets)
         }
         gastroSets

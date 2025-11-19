@@ -1,17 +1,17 @@
 package by.gastrofest.android.factory
 
-import android.content.Context
+import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import by.gastrofest.android.ui.GastroViewModel
+import by.gastrofest.android.ui.GastrofestViewModel
 
 class GastroViewModelFactory(
-    private val context: Context
+    private val application: Application
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(GastroViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(GastrofestViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return GastroViewModel(context.applicationContext) as T
+            return GastrofestViewModel(application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
