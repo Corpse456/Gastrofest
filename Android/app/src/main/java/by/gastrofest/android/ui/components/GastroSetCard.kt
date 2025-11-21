@@ -69,10 +69,23 @@ fun GastroSetCard(set: GastroSet, onClick: () -> Unit) {
             Spacer(Modifier.height(8.dp))
 
             // Название участника
-            Text(
-                text = set.participant?.title ?: "Без названия",
-                style = MaterialTheme.typography.titleMedium
-            )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = set.participant?.title ?: "Без названия",
+                    style = MaterialTheme.typography.titleMedium
+                )
+
+                set.weight?.let {
+                    Text(
+                        text = "$it г",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
+            }
+
 
             Spacer(Modifier.height(4.dp))
 
@@ -90,11 +103,20 @@ fun GastroSetCard(set: GastroSet, onClick: () -> Unit) {
             ) {
                 if (set.delivery == true) Tag("Доставка")
                 if (set.booking == true) Tag("Бронь")
-                if (set.eatOutside == true) Tag("На улице")
+                if (set.eatOutside == true) Tag("С собой")
+//                set.participant?.workingHours?.let {
+//                    if (isOpenRightNow(it)) Tag("Открыто до")
+//                    else Tag("Откроется в ")
+//                }
             }
         }
     }
 }
+
+//@Composable
+//private fun isOpenRightNow(workingHours: Set<WorkingHours>): Boolean {
+//    workingHours
+//}
 
 @Composable
 fun Tag(text: String) {
