@@ -1,7 +1,7 @@
 package by.gastrofest.parser.service
 
-import by.gastrofest.parser.constant.MAIN_PAGE_URL
 import by.gastrofest.parser.constant.NODE_RECORD_CLASS
+import by.gastrofest.parser.constant.SCRAPE_URL
 import by.gastrofest.parser.getDocument
 import by.gastrofest.parser.model.GastroFest
 import by.gastrofest.parser.model.GastroSet
@@ -15,7 +15,7 @@ class ParserService(
 ) {
 
     fun getGastroSetsList(): List<GastroSet> {
-        val document: Document = getDocument(MAIN_PAGE_URL)
+        val document: Document = getDocument(SCRAPE_URL)
         val gastroFest: GastroFest = extractGastrofestFromElement(document)
         if (!gastrofestCommonService.shouldContinue(gastroFest)) {
             return emptyList()
