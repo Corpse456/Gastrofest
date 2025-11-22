@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import by.gastrofest.android.ui.GastrofestScreen
 import by.gastrofest.android.ui.GastrofestUiState
+import by.gastrofest.android.ui.screen.GastroSetDetailsScreen
 
 @Composable
 fun AppNavHost(state: GastrofestUiState) {

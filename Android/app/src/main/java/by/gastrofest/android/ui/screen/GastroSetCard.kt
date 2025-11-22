@@ -1,4 +1,4 @@
-package by.gastrofest.android.ui.components
+package by.gastrofest.android.ui.screen
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState

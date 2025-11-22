@@ -1,11 +1,14 @@
-package by.gastrofest.android.ui.components
+package by.gastrofest.android.ui.screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,8 +28,11 @@ fun GastroSetDetailsScreen(id: Long, state: GastrofestUiState) {
         Text("Сет не найден")
         return
     }
+    val scrollState = rememberScrollState()
 
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(modifier = Modifier.fillMaxSize()
+        .verticalScroll(scrollState)
+        .padding(16.dp)) {
 
         // Название заведения
         Text(
