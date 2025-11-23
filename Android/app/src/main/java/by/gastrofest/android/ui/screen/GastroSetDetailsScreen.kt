@@ -5,18 +5,15 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import by.gastrofest.android.ui.GastrofestUiState
-import coil.compose.AsyncImage
+import by.gastrofest.android.ui.components.ImageCarousel
 
 @Composable
 fun GastroSetDetailsScreen(id: Long, state: GastrofestUiState) {
@@ -30,9 +27,12 @@ fun GastroSetDetailsScreen(id: Long, state: GastrofestUiState) {
     }
     val scrollState = rememberScrollState()
 
-    Column(modifier = Modifier.fillMaxSize()
-        .verticalScroll(scrollState)
-        .padding(16.dp)) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(scrollState)
+            .padding(16.dp)
+    ) {
 
         // Название заведения
         Text(
@@ -70,27 +70,11 @@ fun GastroSetDetailsScreen(id: Long, state: GastrofestUiState) {
 
         // Фото блюд
         if (!set.mealsImages.isNullOrEmpty()) {
-            Text(
-                text = "Фото блюд:",
-                style = MaterialTheme.typography.titleMedium
-            )
-            Spacer(Modifier.height(8.dp))
-
-            LazyRow() {
-                items(set.mealsImages!!) { img ->
-                    AsyncImage(
-                        model = img,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .height(140.dp)
-                            .padding(end = 8.dp),
-                        contentScale = ContentScale.Crop
-                    )
-                }
-            }
-
+            ImageCarousel(set.mealsImages!!)
             Spacer(Modifier.height(16.dp))
         }
+
+        Spacer(Modifier.height(16.dp))
 
         // Описание блюд
         Text("Состав:", style = MaterialTheme.typography.titleMedium)
@@ -101,8 +85,10 @@ fun GastroSetDetailsScreen(id: Long, state: GastrofestUiState) {
         // Время работы
         Text("График работы:", style = MaterialTheme.typography.titleMedium)
         set.participant?.workingHours?.forEach {
-            Text("• ${it.weekDays}: ${it.openTime} - ${it.closeTime}", modifier = Modifier.padding(top = 4.dp))
+            Text(
+                "• ${it.weekDays}: ${it.openTime} - ${it.closeTime}",
+                modifier = Modifier.padding(top = 4.dp)
+            )
         }
     }
 }
-

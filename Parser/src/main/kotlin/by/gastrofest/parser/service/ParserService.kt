@@ -6,15 +6,33 @@ import by.gastrofest.parser.getDocument
 import by.gastrofest.parser.model.GastroFest
 import by.gastrofest.parser.model.GastroSet
 import by.gastrofest.parser.model.Participant
+import com.fasterxml.jackson.databind.SerializationFeature
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 
 class ParserService(
     private val gastrofestCommonService: GastrofestCommonService
 ) {
 
     fun getGastroSetsList(): List<GastroSet> {
+        val objectMapper = jacksonObjectMapper().apply {
+            registerModule(JavaTimeModule())
+            disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+        }
+        val inputStream = Thread.currentThread()
+            .contextClassLoader
+            .getResourceAsStream("10-th.Gastrofest.json")
+            ?: error("File not found in resources")
+
+        val json = inputStream.bufferedReader().readText()
+        return objectMapper.readValue(json)
+    }
+
+    fun getGastroSetsList2(): List<GastroSet> {
         val document: Document = getDocument(SCRAPE_URL)
         val gastroFest: GastroFest = extractGastrofestFromElement(document)
         if (!gastrofestCommonService.shouldContinue(gastroFest)) {

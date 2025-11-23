@@ -1,0 +1,1428 @@
+[
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0011_52.jpg?itok=efOCUqpN",
+    "url": "https://gastrofest.by//node/14927",
+    "theme": "Осенние каникулы в деревне",
+    "weight": 1120,
+    "eatOutside": true,
+    "booking": true,
+    "delivery": null,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0011_52.jpg",
+      "https://gastrofest.by/sites/default/files/0020_28.jpg",
+      "https://gastrofest.by/sites/default/files/0023_32.jpg",
+      "https://gastrofest.by/sites/default/files/0025_25.jpg",
+      "https://gastrofest.by/sites/default/files/0022_21.jpg"
+    ],
+    "mealsDescriptions": [
+      "“Огород и грядки” — брускетта с паштетом, яблоком и укропной пудрой",
+      "“Аромат печи” — драники с кремом из сметаны, грибами и грудинкой",
+      "“Запах костра” — свиные ребрышки с морковным пюре и облепиховым BBQ",
+      "“Сладкая банка из погреба” — чернично-лавандовый трайфл с маршмеллоу"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "Gastropub DROVA",
+      "address": "ул. Б. Хмельницкого, 10а, Минск",
+      "phone": "+375291094040",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн - вс",
+          "openTime": [
+            17,
+            0
+          ],
+          "closeTime": [
+            5,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0021_18.jpg?itok=cgxBpAEk",
+    "url": "https://gastrofest.by//node/14944",
+    "theme": "Вечер на хуторе",
+    "weight": 1851,
+    "eatOutside": true,
+    "booking": true,
+    "delivery": null,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0021_18.jpg",
+      "https://gastrofest.by/sites/default/files/0015_53.jpg",
+      "https://gastrofest.by/sites/default/files/0031_7.jpg"
+    ],
+    "mealsDescriptions": [
+      "Нежная жареная рыба под маринадом с томатной кислинкой, луком, сладкой морковью и чесноком",
+      "Хуторская копчёная шпундра (подкопченный свиной кумпячок в свекольном маринаде)",
+      "Кашанка из молодого поросенка (кровяная колбаса в лучших деревенских традициях с гречневой кашей и шпиком)",
+      "Сало собственного посола с лёгкой ноткой паприки и перца",
+      "Сливочный отварной картофель со свежим рубленым зелёным лучком",
+      "Квашеная капуста из бочки с приглушённой кислинкой и лёгким ароматом тмина",
+      "Солёные огурчики",
+      "Перец в цветочном меду",
+      "Деревенские галушки с вишнёвым вареньем и сметаной",
+      "Дикорастущая лесная клюква, острый хрен, горчица и свежая зелень"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "Ресторан Чумацький Шлях",
+      "address": "ул. Мясникова, 34, Минск",
+      "phone": "+375291907777",
+      "restaurant": true,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн - вс",
+          "openTime": [
+            12,
+            0
+          ],
+          "closeTime": [
+            22,
+            30
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0025_28.jpg?itok=FzQ3VKeE",
+    "url": "https://gastrofest.by//node/14937",
+    "theme": "Тихий вечер с любимой книгой",
+    "weight": 1100,
+    "eatOutside": false,
+    "booking": true,
+    "delivery": null,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0025_28.jpg",
+      "https://gastrofest.by/sites/default/files/0004_97.jpg",
+      "https://gastrofest.by/sites/default/files/0008_79.jpg",
+      "https://gastrofest.by/sites/default/files/0012_73.jpg",
+      "https://gastrofest.by/sites/default/files/0017_40.jpg"
+    ],
+    "mealsDescriptions": [
+      "Канун Всех Святых",
+      "Кольца кальмара с тыквенное-морковным пюре на кокосовых сливках и тыквенными запеченными пьюрами",
+      "Золотая Рыбка",
+      "Филе сибаса с птитимом, брокколи Ким-чи, сливочным соусом и красной икрой",
+      "Бенджамин Бьюфорд Блю «Бабба»",
+      "Сладкие креветки с сыром страчателла, свежим огурцом и песто",
+      "Вечное сияние чистого разума",
+      "Лимончелло-тирамису со швейцарской меренгой, кремом маскарпоне, лимонным курдом и меренгой"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "Кафе ETTAL",
+      "address": "ул. Белградская, 14, Минск",
+      "phone": "+375296171414",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн - вс",
+          "openTime": [
+            9,
+            0
+          ],
+          "closeTime": [
+            22,
+            30
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0018_31.jpg?itok=JLxaHRpU",
+    "url": "https://gastrofest.by//node/14934",
+    "theme": "Студенческие годы",
+    "weight": 1220,
+    "eatOutside": true,
+    "booking": true,
+    "delivery": true,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0018_31.jpg",
+      "https://gastrofest.by/sites/default/files/0005_99.jpg",
+      "https://gastrofest.by/sites/default/files/0007_82.jpg",
+      "https://gastrofest.by/sites/default/files/0013_58.jpg",
+      "https://gastrofest.by/sites/default/files/0004_95.jpg"
+    ],
+    "mealsDescriptions": [
+      "Овощной тартар со сливочным раком и заправкой винегрет",
+      "Куриное суфле \"А-ля Веллингтон\" со сливочной креветкой",
+      "Лукошко из картошки с лесными грибами",
+      "Сфольятелла с кокосовым муссом и манговым кули"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "Староместный пивовар",
+      "address": "ул. Сторожовская, 7, Минск",
+      "phone": "+375293174000",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн - вс",
+          "openTime": [
+            12,
+            0
+          ],
+          "closeTime": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0018_33.jpg?itok=EytZ3LR4",
+    "url": "https://gastrofest.by//node/14941",
+    "theme": "Познание мира в детстве",
+    "weight": 1170,
+    "eatOutside": false,
+    "booking": true,
+    "delivery": null,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0018_33.jpg",
+      "https://gastrofest.by/sites/default/files/0002_105.jpg",
+      "https://gastrofest.by/sites/default/files/0004_101.jpg",
+      "https://gastrofest.by/sites/default/files/0009_81.jpg",
+      "https://gastrofest.by/sites/default/files/0011_59.jpg",
+      "https://gastrofest.by/sites/default/files/0013_64.jpg"
+    ],
+    "mealsDescriptions": [
+      "Говяжьи щечки с трюфельным пюре",
+      "Севиче с лососем по-перуански",
+      "Японский суп-лапша чука соба",
+      "Оливье по-нарочански с копченым угрем и унаги-заправкой",
+      "Шоколадный фондан с крем-фреш соусом"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "GARAGE food&coffee",
+      "address": "ул. Городецкая, 30, Минск",
+      "phone": "+375293281111",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "вс - чт",
+          "openTime": [
+            8,
+            0
+          ],
+          "closeTime": [
+            23,
+            0
+          ]
+        },
+        {
+          "id": null,
+          "weekDays": "пт - сб",
+          "openTime": [
+            8,
+            0
+          ],
+          "closeTime": [
+            1,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0013_63.jpg?itok=LZ_EHkM5",
+    "url": "https://gastrofest.by//node/14945",
+    "theme": "Первое кино на большом экране",
+    "weight": 1700,
+    "eatOutside": false,
+    "booking": true,
+    "delivery": null,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0013_63.jpg",
+      "https://gastrofest.by/sites/default/files/0010_73.jpg",
+      "https://gastrofest.by/sites/default/files/0009_80.jpg",
+      "https://gastrofest.by/sites/default/files/0008_81.jpg",
+      "https://gastrofest.by/sites/default/files/0007_86.jpg",
+      "https://gastrofest.by/sites/default/files/0006_92.jpg",
+      "https://gastrofest.by/sites/default/files/0005_103.jpg",
+      "https://gastrofest.by/sites/default/files/0004_100.jpg",
+      "https://gastrofest.by/sites/default/files/0003_115.jpg",
+      "https://gastrofest.by/sites/default/files/0002_104.jpg",
+      "https://gastrofest.by/sites/default/files/0001_124.jpg"
+    ],
+    "mealsDescriptions": [
+      "Бифбургер с сыром чеддер, томатом, салатом, маринованным огурцом и соусом чизбургер",
+      "Чикенбургер с сыром моцарелла, томатом, маринованным огурцом и тейсти соусом",
+      "Два американских хот-дога с копченой колбаской, кетчупом и горчицей",
+      "Тако с копченым мясом, сыром моцарелла, томатной сальсой и соусом баффало",
+      "Американский салат коул слоу",
+      "Крылышки в панировке с соусом BBQ",
+      "Хрустящие луковые кольца",
+      "Стрипсы из цыпленка",
+      "Картофель фри в панировке из специй",
+      "Кукурузные начос",
+      "Американский соус ранч",
+      "Маринованные огурцы"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "Pub12",
+      "address": "пр-т Независимости, 117а, Минск",
+      "phone": "+375291906666",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн - вт",
+          "openTime": [
+            16,
+            0
+          ],
+          "closeTime": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": null,
+          "weekDays": "ср - чт",
+          "openTime": [
+            16,
+            0
+          ],
+          "closeTime": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": null,
+          "weekDays": "пт",
+          "openTime": [
+            16,
+            0
+          ],
+          "closeTime": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": null,
+          "weekDays": "сб-вс",
+          "openTime": [
+            16,
+            0
+          ],
+          "closeTime": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0015_49.jpg?itok=RPuQ9yDo",
+    "url": "https://gastrofest.by//node/14928",
+    "theme": "Семейный вечер у камина",
+    "weight": 980,
+    "eatOutside": true,
+    "booking": true,
+    "delivery": null,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0015_49.jpg",
+      "https://gastrofest.by/sites/default/files/0018_30.jpg",
+      "https://gastrofest.by/sites/default/files/0020_29.jpg",
+      "https://gastrofest.by/sites/default/files/0021_15.jpg",
+      "https://gastrofest.by/sites/default/files/0019_20.jpg"
+    ],
+    "mealsDescriptions": [
+      "“Разговоры у огня” — тартар из говядины с муссом из печеного чеснока, бородинским чипсом и бочковым огурцом",
+      "“Вкус детства” — крем-суп из белых грибов с гренками и зеленым соусом",
+      "“Главный герой вечера” — стейк из свиной шеи с пюре из тыквы, мясным соусом, вяленой брусникой и луковым джемом",
+      "“Сладкая искра” — шарлотка с соленой карамелью, пломбиром, клюквой и розмарином"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "GRILL & BAR LONDON",
+      "address": "ул. Энгельса, 10, Минск",
+      "phone": "+375256454647",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн - вс",
+          "openTime": [
+            11,
+            0
+          ],
+          "closeTime": [
+            23,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0020_30.jpg?itok=ld7dEFxH",
+    "url": "https://gastrofest.by//node/14929",
+    "theme": "Школьный выпускной",
+    "weight": 1330,
+    "eatOutside": true,
+    "booking": true,
+    "delivery": true,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0020_30.jpg",
+      "https://gastrofest.by/sites/default/files/0005_97.jpg",
+      "https://gastrofest.by/sites/default/files/0006_90.jpg",
+      "https://gastrofest.by/sites/default/files/0008_77.jpg",
+      "https://gastrofest.by/sites/default/files/0012_71.jpg",
+      "https://gastrofest.by/sites/default/files/0010_70.jpg"
+    ],
+    "mealsDescriptions": [
+      "Бутерброд с мортаделлой, соусом песто, сливочной моцареллой с соусом из сладкой горчицы на домашнем хлебе",
+      "Сырный суп с добавлением студенческих колбасок",
+      "Салат \"Татьянин день\" из куриного филе на гриле, свежего огурца, красной фасоли, сладкого красного лука, кириешек и нежного соуса",
+      "Бургер \"Мозговой штурм\" на булочке бриошь с говяжьей котлетой, сыром чеддер, томатом и салатом айсберг и макаронами с сыром",
+      "Шоколадная колбаса из печенья, какао и кокоса"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "BBJ Burger&Bar / BBJ Grill&Bar",
+      "address": "ул. Гурского, 43а, Минск",
+      "phone": "+375293174617",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "вс - чт",
+          "openTime": [
+            12,
+            0
+          ],
+          "closeTime": [
+            23,
+            0
+          ]
+        },
+        {
+          "id": null,
+          "weekDays": "пт - сб",
+          "openTime": [
+            12,
+            0
+          ],
+          "closeTime": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/DSCF4304.jpeg?itok=xG8z7swB",
+    "url": "https://gastrofest.by//node/14931",
+    "theme": "Воспоминания о походе в лес за грибами",
+    "weight": 980,
+    "eatOutside": true,
+    "booking": true,
+    "delivery": null,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/DSCF4304.jpeg",
+      "https://gastrofest.by/sites/default/files/DSCF4238.jpeg",
+      "https://gastrofest.by/sites/default/files/DSCF4213_0.jpeg",
+      "https://gastrofest.by/sites/default/files/DSCF4254.jpeg",
+      "https://gastrofest.by/sites/default/files/DSCF4256.jpeg",
+      "https://gastrofest.by/sites/default/files/DSCF4226.jpeg"
+    ],
+    "mealsDescriptions": [
+      "Брускетта с вешенками и опятами на луковом хлебе",
+      "\"Ложный капучино\" (крем-суп из грибов с чипсами из пармезана и пенкой из фуа-гра)",
+      "\"Лесная полянка\" (малиновый сорбе)",
+      "Утиная ножка с орзотто, грибами и яблочным соусом",
+      "Десерт \"Муравейник\" с грецкими орехами"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "Робинсон клуб / Робинсон сити",
+      "address": "Ждановичский с/с, 16/1, Минская область",
+      "phone": "+375445021222",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн - вс",
+          "openTime": [
+            12,
+            0
+          ],
+          "closeTime": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0023_34.jpg?itok=iW3UPv5Y",
+    "url": "https://gastrofest.by//node/14943",
+    "theme": "Путешествие на край света",
+    "weight": 1210,
+    "eatOutside": false,
+    "booking": true,
+    "delivery": null,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0023_34.jpg",
+      "https://gastrofest.by/sites/default/files/0002_103.jpg",
+      "https://gastrofest.by/sites/default/files/0003_114.jpg",
+      "https://gastrofest.by/sites/default/files/0005_102.jpg",
+      "https://gastrofest.by/sites/default/files/0007_85.jpg",
+      "https://gastrofest.by/sites/default/files/0009_79.jpg",
+      "https://gastrofest.by/sites/default/files/0011_58.jpg",
+      "https://gastrofest.by/sites/default/files/0013_62.jpg",
+      "https://gastrofest.by/sites/default/files/0016_41.jpg"
+    ],
+    "mealsDescriptions": [
+      "Капуста кимчи",
+      "Пряная морковь",
+      "Коул слоу",
+      "Хрустящий кальмар с соусом пряный Майо",
+      "Домбури с копченым окунем",
+      "Хрустящая корейская курочка в соусе хойсин",
+      "Рис с кунжутом",
+      "Чиа-пудинг с бананом"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "Бистро ENZO Asia",
+      "address": "ул. Октябрьская, 23, Минск",
+      "phone": "+375291770088",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн - вс",
+          "openTime": [
+            12,
+            0
+          ],
+          "closeTime": [
+            22,
+            30
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0027_10.jpg?itok=BE8ME192",
+    "url": "https://gastrofest.by//node/14938",
+    "theme": "Студенческая вечеринка",
+    "weight": 1420,
+    "eatOutside": true,
+    "booking": true,
+    "delivery": true,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0027_10.jpg",
+      "https://gastrofest.by/sites/default/files/0003_112.jpg",
+      "https://gastrofest.by/sites/default/files/0008_80.jpg",
+      "https://gastrofest.by/sites/default/files/0012_74.jpg",
+      "https://gastrofest.by/sites/default/files/0013_60.jpg",
+      "https://gastrofest.by/sites/default/files/0014_44.jpg",
+      "https://gastrofest.by/sites/default/files/0015_52.jpg",
+      "https://gastrofest.by/sites/default/files/0016_40.jpg"
+    ],
+    "mealsDescriptions": [
+      "Креветки в горчичном соусе на подложке из огурца",
+      "Хрустящая свинина со специями",
+      "Овощной салат из спаржи и огурца",
+      "Рис с грудинкой и соевыми бобами в имбирно-соевом соусе",
+      "Цыпленок Гунбао",
+      "Суп Субо",
+      "Вареные пельмени со свининой и пекинской капустой",
+      "Закуска из маринованной редьки"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "Ресторан китайской кухни ЛИЧИ",
+      "address": "пр-т Победителей, 1, Минск",
+      "phone": "+375259980777",
+      "restaurant": true,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн",
+          "openTime": [
+            13,
+            0
+          ],
+          "closeTime": [
+            22,
+            30
+          ]
+        },
+        {
+          "id": null,
+          "weekDays": "вт - вс",
+          "openTime": [
+            11,
+            0
+          ],
+          "closeTime": [
+            22,
+            30
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0017_38.jpg?itok=ADMqjBOx",
+    "url": "https://gastrofest.by//node/14935",
+    "theme": "Вечерний закат",
+    "weight": 780,
+    "eatOutside": false,
+    "booking": true,
+    "delivery": null,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0017_38.jpg",
+      "https://gastrofest.by/sites/default/files/0003_111.jpg",
+      "https://gastrofest.by/sites/default/files/0004_96.jpg",
+      "https://gastrofest.by/sites/default/files/0005_100.jpg",
+      "https://gastrofest.by/sites/default/files/0009_78.jpg",
+      "https://gastrofest.by/sites/default/files/0011_55.jpg"
+    ],
+    "mealsDescriptions": [
+      "Лосось с соусом лемонграсс и апельсином",
+      "Тыквенный крем-суп с креветкой и песто из петрушки",
+      "Птитим в томатном соусе с гребешком и голубыми мидиями",
+      "Чуррос со сгущенкой из свеклы"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "MORELLA",
+      "address": "ул. Сухая, 2, Минск",
+      "phone": "+375296440464",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "вс - чт",
+          "openTime": [
+            12,
+            0
+          ],
+          "closeTime": [
+            22,
+            30
+          ]
+        },
+        {
+          "id": null,
+          "weekDays": "пт - сб",
+          "openTime": [
+            12,
+            0
+          ],
+          "closeTime": [
+            23,
+            30
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0021_17.jpg?itok=Y6GZdi1j",
+    "url": "https://gastrofest.by//node/14933",
+    "theme": "Вечер у костра",
+    "weight": 1730,
+    "eatOutside": true,
+    "booking": true,
+    "delivery": true,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0021_17.jpg",
+      "https://gastrofest.by/sites/default/files/0008_78.jpg",
+      "https://gastrofest.by/sites/default/files/0011_54.jpg",
+      "https://gastrofest.by/sites/default/files/0017_37.jpg",
+      "https://gastrofest.by/sites/default/files/0031_6.jpg",
+      "https://gastrofest.by/sites/default/files/0033_3.jpg",
+      "https://gastrofest.by/sites/default/files/0020_34.jpg"
+    ],
+    "mealsDescriptions": [
+      "Запеченный на костре картофель с грудинкой и чесночным дипом",
+      "Пате из куриной печени с клюквенно-розмариновым конфитюром на бородинском хлебе",
+      "Овощи, запечённые на гриле, с соусом пилати и дзадзики",
+      "Каша из котелка лесника с белыми грибами и рваной говядиной",
+      "Ростбиф на огне с малиновым луком, домашним чесночным соусом и лепешкой",
+      "То самое маршмеллоу"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "Ресторан 101",
+      "address": "ул. Городской вал, 12/1, Минск",
+      "phone": "+375293473101",
+      "restaurant": true,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн - вс",
+          "openTime": [
+            12,
+            0
+          ],
+          "closeTime": [
+            22,
+            30
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0013_61.jpg?itok=q7OFagBa",
+    "url": "https://gastrofest.by//node/14940",
+    "theme": "Закат на берегу моря",
+    "weight": 905,
+    "eatOutside": false,
+    "booking": true,
+    "delivery": true,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0013_61.jpg",
+      "https://gastrofest.by/sites/default/files/0003_113.jpg",
+      "https://gastrofest.by/sites/default/files/0006_91.jpg",
+      "https://gastrofest.by/sites/default/files/0007_84.jpg",
+      "https://gastrofest.by/sites/default/files/0011_56.jpg"
+    ],
+    "mealsDescriptions": [
+      "Брускетта с лососем и красной икрой",
+      "Брускетта с томатами и страчателлой",
+      "Салат «Капрезе»",
+      "Ризотто с мидиями и страчателлой",
+      "Панна-котта с манговым муссом"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "СмокиМо",
+      "address": "пер. Музыкальный, 1, Минск",
+      "phone": "+375293333920",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "вс - чт",
+          "openTime": [
+            12,
+            0
+          ],
+          "closeTime": [
+            22,
+            0
+          ]
+        },
+        {
+          "id": null,
+          "weekDays": "пт - сб",
+          "openTime": [
+            12,
+            0
+          ],
+          "closeTime": [
+            23,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0024_24.jpg?itok=CfvFSf05",
+    "url": "https://gastrofest.by//node/14942",
+    "theme": "Детство",
+    "weight": 1200,
+    "eatOutside": false,
+    "booking": true,
+    "delivery": null,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0024_24.jpg",
+      "https://gastrofest.by/sites/default/files/0002_102.jpg",
+      "https://gastrofest.by/sites/default/files/0010_72.jpg",
+      "https://gastrofest.by/sites/default/files/0011_57.jpg",
+      "https://gastrofest.by/sites/default/files/0018_32.jpg",
+      "https://gastrofest.by/sites/default/files/0004_98.jpg"
+    ],
+    "mealsDescriptions": [
+      "Суп \"А-ля Том Ям\"",
+      "Закуска из ферментированных овощей",
+      "Телячьи щечки с нежнейшим пюре и нитями Чили",
+      "Десерт \"Сердца\""
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "Ресторан-Бистро Галерея",
+      "address": "ул. Гикало, 1, Минск",
+      "phone": "+375293492530",
+      "restaurant": true,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн - вс",
+          "openTime": [
+            13,
+            0
+          ],
+          "closeTime": [
+            20,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0030_11.jpg?itok=ve2moswU",
+    "url": "https://gastrofest.by//node/14930",
+    "theme": "Первая поездка за границу",
+    "weight": 1350,
+    "eatOutside": true,
+    "booking": true,
+    "delivery": true,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0030_11.jpg",
+      "https://gastrofest.by/sites/default/files/0004_94.jpg",
+      "https://gastrofest.by/sites/default/files/0005_98.jpg",
+      "https://gastrofest.by/sites/default/files/0010_71.jpg",
+      "https://gastrofest.by/sites/default/files/0011_53.jpg",
+      "https://gastrofest.by/sites/default/files/0012_72.jpg",
+      "https://gastrofest.by/sites/default/files/0013_56.jpg",
+      "https://gastrofest.by/sites/default/files/0013_57.jpg",
+      "https://gastrofest.by/sites/default/files/0014_43.jpg",
+      "https://gastrofest.by/sites/default/files/0015_50.jpg"
+    ],
+    "mealsDescriptions": [
+      "Том Ям Кай с цыплёнком су-вид и кокосовыми сливками",
+      "Лапша Харусамэ Куроганэ-эби с креветками и диппинг-соусом",
+      "Ролл с крабовым муссом, японской маринованной редькой и соусами свит чили и терияки",
+      "Ролл Радуга с тремя видами рыбы",
+      "Ролл классика Японии с норвежской форелью и авокадо"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "ART FOOD",
+      "address": "ул. Свердлова, 32, Минск",
+      "phone": "+375445507119",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн - вс",
+          "openTime": [
+            11,
+            0
+          ],
+          "closeTime": [
+            23,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0025_24.jpg?itok=wSOqnc2E",
+    "url": "https://gastrofest.by//node/14926",
+    "theme": "Отдых на курорте",
+    "weight": 1500,
+    "eatOutside": true,
+    "booking": true,
+    "delivery": true,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0025_24.jpg",
+      "https://gastrofest.by/sites/default/files/0006_89.jpg",
+      "https://gastrofest.by/sites/default/files/0008_76.jpg",
+      "https://gastrofest.by/sites/default/files/0010_69.jpg",
+      "https://gastrofest.by/sites/default/files/0026_15.jpg",
+      "https://gastrofest.by/sites/default/files/0017_43.jpg",
+      "https://gastrofest.by/sites/default/files/0002_101.jpg"
+    ],
+    "mealsDescriptions": [
+      "Салат из томатов и огурцов с добавлением сыра сулугуни, репчатого лука, перца чили и зелени, в заправке соуса наршараб",
+      "Аджарский хачапури с начинкой из двух сыров и яйцом",
+      "Кукуруза на подушке из морепродуктов",
+      "Шашлык «Батумский городской» (себеп кабаби из курицы укутанное в мясо свинины)",
+      "Хинкали с картошкой и грибами с добавлением эстрагона",
+      "Пахлава (тончайшие слои теста, пропитанные медовым сиропом с фисташковым кремом на основе крем чиза с кунжутом)"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "Ресторан Тифлисъ",
+      "address": "ул. Толбухина, 3, Минск",
+      "phone": "+375445555050",
+      "restaurant": true,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн - вс",
+          "openTime": [
+            11,
+            0
+          ],
+          "closeTime": [
+            22,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0022_23.jpg?itok=GSw8xcJ7",
+    "url": "https://gastrofest.by//node/14936",
+    "theme": "Лето у бабушки",
+    "weight": 1300,
+    "eatOutside": true,
+    "booking": true,
+    "delivery": true,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0022_23.jpg",
+      "https://gastrofest.by/sites/default/files/0001_123.jpg",
+      "https://gastrofest.by/sites/default/files/0005_101.jpg",
+      "https://gastrofest.by/sites/default/files/0007_83.jpg",
+      "https://gastrofest.by/sites/default/files/0017_39.jpg",
+      "https://gastrofest.by/sites/default/files/0015_51.jpg"
+    ],
+    "mealsDescriptions": [
+      "Лёгкий салат с копчёной курочкой, страчателлой и ореховым соусом",
+      "Две брускетты с пармской ветчиной и вяленым томатом",
+      "Две брускетты с пепперони и томатом черри",
+      "Драники с медальонами из говядины под пряным вишнёвым соусом",
+      "Свиные ребрышки с картофельным пюре и соусом демигляс",
+      "Ленивые сырники с вишнёвым соусом"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "Книги и Дым",
+      "address": "ул. Зыбицкая, 9, Минск",
+      "phone": "+375296461448",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "вс - чт",
+          "openTime": [
+            16,
+            0
+          ],
+          "closeTime": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": null,
+          "weekDays": "пт - сб",
+          "openTime": [
+            16,
+            0
+          ],
+          "closeTime": [
+            2,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/0016_39.jpg?itok=S63z1Iao",
+    "url": "https://gastrofest.by//node/14932",
+    "theme": "Воспоминания о первом праздновании Нового года в кругу семьи",
+    "weight": 1370,
+    "eatOutside": false,
+    "booking": true,
+    "delivery": null,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/0016_39.jpg",
+      "https://gastrofest.by/sites/default/files/0019_21.jpg",
+      "https://gastrofest.by/sites/default/files/0020_31.jpg",
+      "https://gastrofest.by/sites/default/files/0021_16.jpg",
+      "https://gastrofest.by/sites/default/files/0022_22.jpg",
+      "https://gastrofest.by/sites/default/files/0023_33.jpg",
+      "https://gastrofest.by/sites/default/files/0024_21.jpg",
+      "https://gastrofest.by/sites/default/files/0027_9.jpg",
+      "https://gastrofest.by/sites/default/files/0025_26.jpg"
+    ],
+    "mealsDescriptions": [
+      "Запеченная свинина «по-французски»",
+      "Печеный картофель со свежим укропом и петрушкой",
+      "Классический салат «Оливье» с докторской колбасой",
+      "Салат «Селедочка под шубой»",
+      "Рулетики из ветчины с сырной начинкой",
+      "Бутерброды со шпротами и сыром",
+      "Тарталетки с икрой",
+      "Консервированные томаты и огурцы",
+      "Маринованная капуста",
+      "Шоколадные грибочки",
+      "Конфеты «Как в детстве»"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "Clever Irish Pub",
+      "address": "ул. Гикало, 5, Минск",
+      "phone": "+375291092222",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн - чт",
+          "openTime": [
+            16,
+            0
+          ],
+          "closeTime": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": null,
+          "weekDays": "пт",
+          "openTime": [
+            16,
+            0
+          ],
+          "closeTime": [
+            20,
+            0
+          ]
+        },
+        {
+          "id": null,
+          "weekDays": "сб",
+          "openTime": [
+            14,
+            0
+          ],
+          "closeTime": [
+            20,
+            0
+          ]
+        },
+        {
+          "id": null,
+          "weekDays": "вс",
+          "openTime": [
+            14,
+            0
+          ],
+          "closeTime": [
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": null,
+    "imageLink": "https://gastrofest.by/sites/default/files/styles/350/public/DSCF3497.JPG?itok=AD_H0Qfl",
+    "url": "https://gastrofest.by//node/14939",
+    "theme": "Road 66: Вкусы моего американского путешествия.",
+    "weight": 1500,
+    "eatOutside": true,
+    "booking": false,
+    "delivery": null,
+    "mealsImages": [
+      "https://gastrofest.by/sites/default/files/DSCF3497.JPG",
+      "https://gastrofest.by/sites/default/files/DSCF3447.JPG",
+      "https://gastrofest.by/sites/default/files/DSCF3450.JPG",
+      "https://gastrofest.by/sites/default/files/DSCF3451.JPG",
+      "https://gastrofest.by/sites/default/files/DSCF3454.JPG",
+      "https://gastrofest.by/sites/default/files/DSCF3458.JPG",
+      "https://gastrofest.by/sites/default/files/DSCF3464.JPG",
+      "https://gastrofest.by/sites/default/files/DSCF3477.JPG",
+      "https://gastrofest.by/sites/default/files/DSCF3480.JPG"
+    ],
+    "mealsDescriptions": [
+      "Нью-Йорк (классический четвертьфунтовый чизбургер с сочной крафтовой говяжьей котлетой и сыром)",
+      "Кентукки (куриные чупа чупсы в пикантной глазури)",
+      "Теннеси (томленые ребра в глазури Джек Дэниэлс с сырным попкорном)",
+      "Канзас (пулд порк сэндвич с двойным сыром)",
+      "Техас (колбаски гриль с соусом «Каролина рипер» и криспи луком)",
+      "Зона 51 (уфо сэндвич с хрустящим беконом, сыром чеддер и соусом ранч)",
+      "Лас-Вегас (пинчос с пепперони, сыром чеддер и огурчиками пикули)",
+      "Лос-Анджелес (чизкейк «Аллея славы» в виде звезды)"
+    ],
+    "gastrofest": {
+      "id": null,
+      "title": "Десятый Республиканский",
+      "imageLink": "https://gastrofest.by/sites/all/themes/v2/img/main.jpg",
+      "locations": "МИНСК, БРЕСТ, ГОМЕЛЬ, ГРОДНО, МОГИЛЕВ, ВИТЕБСК, ПИНСК",
+      "startDate": [
+        2025,
+        11,
+        13
+      ],
+      "endDate": [
+        2025,
+        11,
+        30
+      ]
+    },
+    "participant": {
+      "id": null,
+      "title": "Гриль-бар HOGGY",
+      "address": "ул. Бобруйская, 6, фуд-молл \"КОНКОРС\", Минск",
+      "phone": "+375293949949",
+      "restaurant": false,
+      "workingHours": [
+        {
+          "id": null,
+          "weekDays": "пн - вс",
+          "openTime": [
+            12,
+            0
+          ],
+          "closeTime": [
+            22,
+            0
+          ]
+        }
+      ]
+    }
+  }
+]
