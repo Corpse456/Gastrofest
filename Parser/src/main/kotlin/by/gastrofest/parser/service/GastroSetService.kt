@@ -46,7 +46,9 @@ private fun executeWeight(participantInfoDocument: Document): Int? {
     return participantInfoDocument.getElementsByClass(INFO_SUMMARY_CLASS)[0]
         .getElementsByClass(SET_INFO_CLASS)[0]
         .childNodes()
-        .stream().filter { node: Node -> node.toString().lowercase(Locale.getDefault()).contains(WEIGHT_WORD) }
+        .stream()
+        .filter { node: Node -> node.toString().lowercase(Locale.getDefault()).contains(WEIGHT_WORD) }
+        .filter { it.nodeName() == "p" }
         .findAny()
         .map<List<Node>> { obj: Node -> obj.childNodes() }
         .map { weight: List<Node> -> weight[0] }
