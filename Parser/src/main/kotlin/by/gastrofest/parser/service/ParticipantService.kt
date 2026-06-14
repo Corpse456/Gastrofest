@@ -4,6 +4,7 @@ import by.gastrofest.parser.constant.DAY_TIME_DELIMETR
 import by.gastrofest.parser.constant.HREF_PROPERTY
 import by.gastrofest.parser.constant.PARTICIPANT_TITLE_CLASS
 import by.gastrofest.parser.constant.PHONE_CLASS
+import by.gastrofest.parser.constant.REGEXP_PHONE
 import by.gastrofest.parser.constant.REPLACE_WORDS
 import by.gastrofest.parser.constant.RESTAURANT_WORD
 import by.gastrofest.parser.constant.SET_INFO_CLASS
@@ -12,6 +13,7 @@ import by.gastrofest.parser.constant.WORKING_HOURS_CLASS
 import by.gastrofest.parser.model.Participant
 import by.gastrofest.parser.model.WorkingHours
 import org.jsoup.nodes.Document
+import org.jsoup.nodes.TextNode
 import org.jsoup.select.Elements
 import java.time.LocalTime
 import java.util.*
@@ -42,13 +44,27 @@ private fun executePhone(participantInfoDocument: Document): String? {
     return if (participantInfoDocument.getElementsByClass(PHONE_CLASS).isEmpty()) {
         null
     } else {
-        "+" + participantInfoDocument.getElementsByClass(PHONE_CLASS)[0]
+        val phoneChildren = participantInfoDocument.getElementsByClass(PHONE_CLASS)[0]
             .getElementsByClass(SET_INFO_CLASS)[0]
-            .childNodes()[1]
-            .attr(HREF_PROPERTY)
-            .split(": ")[1]
-            .trim()
-            .split("\\+".toRegex())[1]
+            .childNodes()
+        if (phoneChildren.size == 1) {
+            val regex = REGEXP_PHONE.toRegex()
+            val allInfo = (participantInfoDocument.getElementsByClass(PHONE_CLASS)[0]
+                .getElementsByClass(SET_INFO_CLASS)[0]
+                .childNodes()[0] as TextNode).text()
+            val match = regex.find(allInfo)
+            match?.value
+        } else {
+            try {
+                "+" + phoneChildren[1]
+                    .attr(HREF_PROPERTY)
+                    .split(": ")[1]
+                    .trim()
+                    .split("\\+".toRegex())[1]
+            } catch (e: Exception) {
+                null
+            }
+        }
     }
 }
 
@@ -65,7 +81,7 @@ private fun executeWorkingHours(participantInfoDocument: Document): Set<WorkingH
                 workingHoursListStrings[i] = workingHoursString
             }
         }
-        workingHoursList.add(buildWorkingHours(workingHoursString!!))
+        buildWorkingHours(workingHoursString!!)?.let { workingHoursList.add(it) }
     }
     return workingHoursList
 }
@@ -116,13 +132,17 @@ private fun getWorkingHoursListWithMatcher(rawText: String): MutableList<String>
     return result
 }
 
-private fun buildWorkingHours(workingHoursString: String): WorkingHours {
-    val split: List<String> = workingHoursString.split(DAY_TIME_DELIMETR)
-    val weekDays = split[0].trim()
-    val times = split[1].split(" - ")
-    val startTime = parseTime(times, 0)
-    val endTime = parseTime(times, 1)
-    return WorkingHours(weekDays = weekDays, openTime = startTime, closeTime = endTime)
+private fun buildWorkingHours(workingHoursString: String): WorkingHours? {
+    try {
+        val split: List<String> = workingHoursString.split(DAY_TIME_DELIMETR)
+        val weekDays = split[0].trim()
+        val times = split[1].split(" - ")
+        val startTime = parseTime(times, 0)
+        val endTime = parseTime(times, 1)
+        return WorkingHours(weekDays = weekDays, openTime = startTime, closeTime = endTime)
+    } catch (e: Exception) {
+        return null
+    }
 }
 
 private fun parseTime(times: List<String>, range: Int): LocalTime {

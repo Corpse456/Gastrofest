@@ -25,7 +25,7 @@ class GastroSetRepository(
     }
 
     private suspend fun fetchAndCache(context: Context): List<GastroSet> = withContext(Dispatchers.IO) {
-        val gastroSets: List<GastroSet> = parser.getGastroSetsList()
+        val gastroSets: List<GastroSet> = parser.getGastroSetsList3()
         if (gastrofestIsOver(gastroSets)) {
             return@withContext emptyList()
         }

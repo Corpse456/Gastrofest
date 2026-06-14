@@ -24,6 +24,8 @@ const val DELIVERY_CLASS = "field-name-field-delivery"
 
 const val PHONE_CLASS = "field-name-field-telefon"
 
+const val REGEXP_PHONE = """\+375\s?\d{2}\s?\d{3}\s?\d{2}\s?\d{2}"""
+
 const val WORKING_HOURS_CLASS = "field-name-field-workinghours"
 
 const val IMAGES_CLASS = "slides"
