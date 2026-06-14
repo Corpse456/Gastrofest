@@ -4,10 +4,13 @@ import by.gastrofest.dbo.GastroSetDbo;
 import by.gastrofest.dbo.ParticipantDbo;
 import by.gastrofest.dto.GastroSetDto;
 import by.gastrofest.parser.model.GastroSet;
+import io.micrometer.common.util.StringUtils;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Mapper(componentModel = "spring", uses = { ParticipantMapper.class, GastrofestMapper.class })
 public interface GastroSetMapper {
@@ -22,10 +25,12 @@ public interface GastroSetMapper {
     GastroSetDbo toGastroSetDbo(final GastroSet gastroSet);
 
     default String combineParticipantFields(ParticipantDbo participantDbo) {
-        return participantDbo.getTitle() + "\n" +
-               participantDbo.getAddress() + "\n" +
-               participantDbo.getPhone() + "\n" +
-               getWorkingHoursString(participantDbo);
+        return Stream.of(participantDbo.getTitle(),
+                        participantDbo.getAddress(),
+                        participantDbo.getPhone(),
+                        getWorkingHoursString(participantDbo))
+                .filter(StringUtils::isNotEmpty)
+                .collect(Collectors.joining("\n"));
     }
 
     private static String getWorkingHoursString(final ParticipantDbo participantDbo) {
@@ -34,6 +39,6 @@ public interface GastroSetMapper {
                                         ": " + workingHoursDbo.getOpenTime() +
                                         " - " + workingHoursDbo.getCloseTime())
                 .toList();
-        return String.join("\n" + mappedWorkingHours);
+        return String.join("\n", mappedWorkingHours);
     }
 }

@@ -45,8 +45,16 @@ function goBack() {
       <!-- Основной контент -->
       <div class="max-w-3xl w-full mx-auto text-center flex flex-col items-center space-y-8 px-4">
         <!-- Заголовок -->
-        <h1 class="text-3xl font-bold mb-4">{{ gastroSet.participant }}</h1>
-        <h1 class="text-3xl font-bold mb-4">{{ "«" + gastroSet.theme + "»" }}</h1>
+        <div class="mb-4">
+          <h1
+              v-for="line in gastroSet.participant?.split('\n')"
+              :key="line"
+              class="text-3xl font-bold text-gray-900"
+          >
+            {{ line }}
+          </h1>
+        </div>
+        <h1 v-if="gastroSet.theme" class="text-3xl font-bold mb-4">{{ "«" + gastroSet.theme + "»" }}</h1>
 
         <!-- Описания блюд -->
         <div

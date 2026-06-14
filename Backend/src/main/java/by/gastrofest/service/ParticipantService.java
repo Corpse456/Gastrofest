@@ -2,10 +2,13 @@ package by.gastrofest.service;
 
 import by.gastrofest.dbo.ParticipantDbo;
 import by.gastrofest.repository.ParticipantRepository;
+import io.micrometer.common.util.StringUtils;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,14 +27,22 @@ public class ParticipantService {
                 .collect(Collectors.toSet());
         participantDbo.setWorkingHours(workingHoursDbos);
         return repository.findByTitleIgnoreCase(participantDbo.getTitle())
-                .or(() -> repository.findByAddressIgnoreCaseAndPhone(participantDbo.getAddress(),
-                        participantDbo.getPhone()))
-                .map(participant -> {
-                    if (!workingHoursService.sameWorkingHours(participantDbo, participant)) {
-                        participant.setWorkingHours(participantDbo.getWorkingHours());
-                    }
-                    return participant;
-                })
+                .or(() -> getByAddressAndPhone(participantDbo))
+                .map(participant -> mapWorkingHours(participantDbo, participant))
                 .orElseGet(() -> repository.save(participantDbo));
+    }
+
+    private Optional<ParticipantDbo> getByAddressAndPhone(final ParticipantDbo participantDbo) {
+        if (StringUtils.isEmpty(participantDbo.getAddress()) && StringUtils.isEmpty(participantDbo.getPhone())) {
+            return Optional.empty();
+        }
+        return repository.findByAddressIgnoreCaseAndPhone(participantDbo.getAddress(), participantDbo.getPhone());
+    }
+
+    private ParticipantDbo mapWorkingHours(final ParticipantDbo participantDbo, final ParticipantDbo participant) {
+        if (!workingHoursService.sameWorkingHours(participantDbo, participant)) {
+            participant.setWorkingHours(participantDbo.getWorkingHours());
+        }
+        return participant;
     }
 }

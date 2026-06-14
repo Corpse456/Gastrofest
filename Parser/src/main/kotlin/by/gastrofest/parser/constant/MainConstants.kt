@@ -12,7 +12,9 @@ const val SRC_PROPERTY = "src"
 
 const val HREF_PROPERTY = "href"
 
-const val IMG_TAG = "img"
+const val VIDEO_TAG = "video"
+
+const val SOURCE_TAG = "source"
 
 const val LIST_TAG = "li"
 
